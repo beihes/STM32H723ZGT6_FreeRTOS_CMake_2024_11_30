@@ -1,6 +1,6 @@
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Usart/usart.c.obj: \
- D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\Usart\usart.c \
- D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\Usart\usart.h \
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/cMyLib.c.obj: \
+ D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\cMyLib.c \
+ D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\cMyLib.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\define\define.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\user\inc\stm32h7xx_hal_conf.h \
@@ -110,4 +110,6 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Usart/usart.c.obj: \
  d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\syslimits.h \
  d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\time.h \
  d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\time.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\dts\dts.h
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\dts\dts.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\usart\usart.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\inc\cjson.h

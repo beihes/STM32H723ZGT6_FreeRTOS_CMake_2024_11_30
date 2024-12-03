@@ -37,6 +37,14 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+#include "math.h"
+#include "assert.h"
+#include "ctype.h"
+#include "float.h"
+#include "limits.h"
+#include "time.h"
 #include "dts.h"
 /* USER CODE END Includes */
 

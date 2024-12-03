@@ -1,7 +1,5 @@
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Usart/usart.c.obj: \
- D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\Usart\usart.c \
- D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\Usart\usart.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\define\define.h \
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_rtc_alarm.c.obj: \
+ D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\CMyLib\Src\TimeBase\stm32h7xx_hal_timebase_rtc_alarm.c \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\user\inc\stm32h7xx_hal_conf.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_rcc.h \
@@ -67,47 +65,4 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Usart/usart.c.obj: \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_uart.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_uart_ex.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_usart.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_usart_ex.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\freertos.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertosconfig.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\projdefs.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\portable.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\deprecated_definitions.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\portable\gcc\arm_cm4f\portmacro.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\mpu_wrappers.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\reent.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\task.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\include\list.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\cmsis_rtos_v2\cmsis_os.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\freertos\cmsis_rtos_v2\cmsis_os2.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\stdio.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\lib\gcc\arm-none-eabi\10.3.1\include\stdarg.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\types.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\endian.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\_endian.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\select.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\_sigset.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\_timeval.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\timespec.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\_timespec.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\_pthreadtypes.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\sched.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\types.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\stdio.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\stdlib.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\stdlib.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\alloca.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\string.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\_locale.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\strings.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\string.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\assert.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\ctype.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\lib\gcc\arm-none-eabi\10.3.1\include\float.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\lib\gcc\arm-none-eabi\10.3.1\include-fixed\limits.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\lib\gcc\arm-none-eabi\10.3.1\include-fixed\syslimits.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\limits.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\sys\syslimits.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\time.h \
- d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\time.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\dts\dts.h
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_usart_ex.h

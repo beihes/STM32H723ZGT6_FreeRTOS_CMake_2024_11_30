@@ -9,6 +9,9 @@ extern "C" {
 #include "define.h"
 #include "dts.h"
 #include "usart.h"
+#include "cJSON.h"
+
+void CJSON_Test();
 
 #ifdef __cplusplus
 }

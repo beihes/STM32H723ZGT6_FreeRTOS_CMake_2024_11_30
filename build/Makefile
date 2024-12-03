@@ -248,6 +248,30 @@ CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.c.s
 .PHONY : CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.c.s
 
+CMyLib/Src/cJSON.obj: CMyLib/Src/cJSON.c.obj
+.PHONY : CMyLib/Src/cJSON.obj
+
+# target to build an object file
+CMyLib/Src/cJSON.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Src/cJSON.c.obj
+.PHONY : CMyLib/Src/cJSON.c.obj
+
+CMyLib/Src/cJSON.i: CMyLib/Src/cJSON.c.i
+.PHONY : CMyLib/Src/cJSON.i
+
+# target to preprocess a source file
+CMyLib/Src/cJSON.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Src/cJSON.c.i
+.PHONY : CMyLib/Src/cJSON.c.i
+
+CMyLib/Src/cJSON.s: CMyLib/Src/cJSON.c.s
+.PHONY : CMyLib/Src/cJSON.s
+
+# target to generate assembly for a file
+CMyLib/Src/cJSON.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Src/cJSON.c.s
+.PHONY : CMyLib/Src/cJSON.c.s
+
 CMyLib/Src/stm32h7xx_hal_msp.obj: CMyLib/Src/stm32h7xx_hal_msp.c.obj
 .PHONY : CMyLib/Src/stm32h7xx_hal_msp.obj
 
@@ -343,6 +367,30 @@ CMyLib/Usart/usart.s: CMyLib/Usart/usart.c.s
 CMyLib/Usart/usart.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Usart/usart.c.s
 .PHONY : CMyLib/Usart/usart.c.s
+
+CMyLib/cMyLib.obj: CMyLib/cMyLib.c.obj
+.PHONY : CMyLib/cMyLib.obj
+
+# target to build an object file
+CMyLib/cMyLib.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/cMyLib.c.obj
+.PHONY : CMyLib/cMyLib.c.obj
+
+CMyLib/cMyLib.i: CMyLib/cMyLib.c.i
+.PHONY : CMyLib/cMyLib.i
+
+# target to preprocess a source file
+CMyLib/cMyLib.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/cMyLib.c.i
+.PHONY : CMyLib/cMyLib.c.i
+
+CMyLib/cMyLib.s: CMyLib/cMyLib.c.s
+.PHONY : CMyLib/cMyLib.s
+
+# target to generate assembly for a file
+CMyLib/cMyLib.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/cMyLib.c.s
+.PHONY : CMyLib/cMyLib.c.s
 
 System/FreeRTOS/CMSIS_RTOS_V2/cmsis_os2.obj: System/FreeRTOS/CMSIS_RTOS_V2/cmsis_os2.c.obj
 .PHONY : System/FreeRTOS/CMSIS_RTOS_V2/cmsis_os2.obj
@@ -3640,6 +3688,9 @@ help:
 	@echo ... CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.obj
 	@echo ... CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.i
 	@echo ... CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.s
+	@echo ... CMyLib/Src/cJSON.obj
+	@echo ... CMyLib/Src/cJSON.i
+	@echo ... CMyLib/Src/cJSON.s
 	@echo ... CMyLib/Src/stm32h7xx_hal_msp.obj
 	@echo ... CMyLib/Src/stm32h7xx_hal_msp.i
 	@echo ... CMyLib/Src/stm32h7xx_hal_msp.s
@@ -3652,6 +3703,9 @@ help:
 	@echo ... CMyLib/Usart/usart.obj
 	@echo ... CMyLib/Usart/usart.i
 	@echo ... CMyLib/Usart/usart.s
+	@echo ... CMyLib/cMyLib.obj
+	@echo ... CMyLib/cMyLib.i
+	@echo ... CMyLib/cMyLib.s
 	@echo ... System/FreeRTOS/CMSIS_RTOS_V2/cmsis_os2.obj
 	@echo ... System/FreeRTOS/CMSIS_RTOS_V2/cmsis_os2.i
 	@echo ... System/FreeRTOS/CMSIS_RTOS_V2/cmsis_os2.s

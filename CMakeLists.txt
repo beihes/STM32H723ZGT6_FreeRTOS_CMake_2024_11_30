@@ -98,8 +98,10 @@ add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx)
 file(GLOB_RECURSE SOURCES
     "App/FreeRTOS/*.c"
     "App/Led/*.c"
+    "CMyLib/cMyLib.c"
     "CMyLib/Define/*.c"
     "CMyLib/Dts/*.c"
+    "CMyLib/Src/cJSON.c"
     "CMyLib/Src/stm32h7xx_hal_msp.c"
     "CMyLib/Src/sysmem.c"
     "CMyLib/Src/syscalls.c"

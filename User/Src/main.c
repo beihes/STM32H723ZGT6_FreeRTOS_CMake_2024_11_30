@@ -82,6 +82,7 @@ int main(void) {
     HAL_DTS_Start(&hdts);
     LED_Init();
     printf("SYSClock:%ld\r\n",HAL_RCC_GetSysClockFreq());
+    CJSON_Test();
     /* USER CODE END 2 */
 
     /* Init scheduler */
