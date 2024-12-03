@@ -152,6 +152,102 @@ App/FreeRTOS/userFreeRTOS.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.s
 .PHONY : App/FreeRTOS/userFreeRTOS.c.s
 
+App/LCD/lcd_fonts.obj: App/LCD/lcd_fonts.c.obj
+.PHONY : App/LCD/lcd_fonts.obj
+
+# target to build an object file
+App/LCD/lcd_fonts.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj
+.PHONY : App/LCD/lcd_fonts.c.obj
+
+App/LCD/lcd_fonts.i: App/LCD/lcd_fonts.c.i
+.PHONY : App/LCD/lcd_fonts.i
+
+# target to preprocess a source file
+App/LCD/lcd_fonts.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.i
+.PHONY : App/LCD/lcd_fonts.c.i
+
+App/LCD/lcd_fonts.s: App/LCD/lcd_fonts.c.s
+.PHONY : App/LCD/lcd_fonts.s
+
+# target to generate assembly for a file
+App/LCD/lcd_fonts.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.s
+.PHONY : App/LCD/lcd_fonts.c.s
+
+App/LCD/lcd_image.obj: App/LCD/lcd_image.c.obj
+.PHONY : App/LCD/lcd_image.obj
+
+# target to build an object file
+App/LCD/lcd_image.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj
+.PHONY : App/LCD/lcd_image.c.obj
+
+App/LCD/lcd_image.i: App/LCD/lcd_image.c.i
+.PHONY : App/LCD/lcd_image.i
+
+# target to preprocess a source file
+App/LCD/lcd_image.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.i
+.PHONY : App/LCD/lcd_image.c.i
+
+App/LCD/lcd_image.s: App/LCD/lcd_image.c.s
+.PHONY : App/LCD/lcd_image.s
+
+# target to generate assembly for a file
+App/LCD/lcd_image.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.s
+.PHONY : App/LCD/lcd_image.c.s
+
+App/LCD/lcd_model.obj: App/LCD/lcd_model.c.obj
+.PHONY : App/LCD/lcd_model.obj
+
+# target to build an object file
+App/LCD/lcd_model.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj
+.PHONY : App/LCD/lcd_model.c.obj
+
+App/LCD/lcd_model.i: App/LCD/lcd_model.c.i
+.PHONY : App/LCD/lcd_model.i
+
+# target to preprocess a source file
+App/LCD/lcd_model.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.i
+.PHONY : App/LCD/lcd_model.c.i
+
+App/LCD/lcd_model.s: App/LCD/lcd_model.c.s
+.PHONY : App/LCD/lcd_model.s
+
+# target to generate assembly for a file
+App/LCD/lcd_model.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.s
+.PHONY : App/LCD/lcd_model.c.s
+
+App/LCD/spi.obj: App/LCD/spi.c.obj
+.PHONY : App/LCD/spi.obj
+
+# target to build an object file
+App/LCD/spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj
+.PHONY : App/LCD/spi.c.obj
+
+App/LCD/spi.i: App/LCD/spi.c.i
+.PHONY : App/LCD/spi.i
+
+# target to preprocess a source file
+App/LCD/spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.i
+.PHONY : App/LCD/spi.c.i
+
+App/LCD/spi.s: App/LCD/spi.c.s
+.PHONY : App/LCD/spi.s
+
+# target to generate assembly for a file
+App/LCD/spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.s
+.PHONY : App/LCD/spi.c.s
+
 App/Led/led.obj: App/Led/led.c.obj
 .PHONY : App/Led/led.obj
 
@@ -3676,6 +3772,18 @@ help:
 	@echo ... App/FreeRTOS/userFreeRTOS.obj
 	@echo ... App/FreeRTOS/userFreeRTOS.i
 	@echo ... App/FreeRTOS/userFreeRTOS.s
+	@echo ... App/LCD/lcd_fonts.obj
+	@echo ... App/LCD/lcd_fonts.i
+	@echo ... App/LCD/lcd_fonts.s
+	@echo ... App/LCD/lcd_image.obj
+	@echo ... App/LCD/lcd_image.i
+	@echo ... App/LCD/lcd_image.s
+	@echo ... App/LCD/lcd_model.obj
+	@echo ... App/LCD/lcd_model.i
+	@echo ... App/LCD/lcd_model.s
+	@echo ... App/LCD/spi.obj
+	@echo ... App/LCD/spi.i
+	@echo ... App/LCD/spi.s
 	@echo ... App/Led/led.obj
 	@echo ... App/Led/led.i
 	@echo ... App/Led/led.s

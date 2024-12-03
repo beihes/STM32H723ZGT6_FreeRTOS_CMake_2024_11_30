@@ -76,6 +76,7 @@ add_compile_options(-Wall)
 include_directories(
     ./App
     ./App/FreeRTOS
+    ./App/LCD
     ./App/Led
     ./CMyLib
     ./CMyLib/Define
@@ -97,6 +98,7 @@ add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx)
 # 源文件
 file(GLOB_RECURSE SOURCES
     "App/FreeRTOS/*.c"
+    "App/LCD/*.c"
     "App/Led/*.c"
     "CMyLib/cMyLib.c"
     "CMyLib/Define/*.c"

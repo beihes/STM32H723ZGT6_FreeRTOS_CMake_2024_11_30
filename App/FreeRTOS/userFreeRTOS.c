@@ -59,6 +59,13 @@ const osThreadAttr_t usart1_printf_attributes = {
     .stack_size = 128 * 4,
     .priority = (osPriority_t)osPriorityNormal,
 };
+/* Definitions for usart1_printf */
+osThreadId_t lcd_printfHandle;
+const osThreadAttr_t lcd_printf_attributes = {
+    .name = "lcd_printf",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -101,6 +108,9 @@ void MX_FREERTOS_Init(void)
 
     /* creation of usart1_printf */
     usart1_printfHandle = osThreadNew(Start_usart1_printf, NULL, &usart1_printf_attributes);
+
+    /* creation of lcd_printf */
+    lcd_printfHandle = osThreadNew(Start_lcd_printf, NULL, &lcd_printf_attributes);
 
     /* USER CODE BEGIN RTOS_THREADS */
     /* add threads, ... */
@@ -171,5 +181,25 @@ void Start_usart1_printf(void *argument)
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-
+void Start_lcd_printf(void *argument)
+{
+    /* USER CODE BEGIN Start_usart1_printf */
+    /* Infinite loop */
+    char midChar[64] = "";
+    LCD_SetDirection(Direction_V);
+    LCD_SetTextFont(&CH_Font24); // 设置2424中文字体,ASCII字体对应为2412
+    LCD_SetBackColor(LCD_BLACK);
+    LCD_SetColor(LCD_WHITE); // 设置画笔颜色
+    for (;;)
+    {
+        strcpy(midChar, "");
+        sprintf(midChar, "CPU T:%ld", temperature);
+        LCD_DisplayText(10, 70, midChar);
+        strcpy(midChar, "");
+        sprintf(midChar, "Time:%ld", xTaskGetTickCount());
+        LCD_DisplayText(10, 100, midChar);
+        osDelay(10);
+    }
+    /* USER CODE END Start_usart1_printf */
+}
 /* USER CODE END Application */

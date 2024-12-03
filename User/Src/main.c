@@ -78,6 +78,7 @@ int main(void) {
     /* Initialize all configured peripherals */
     MX_USART1_UART_Init();
     MX_DTS_Init();
+    SPI_LCD_Init();
     /* USER CODE BEGIN 2 */
     HAL_DTS_Start(&hdts);
     LED_Init();

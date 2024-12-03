@@ -27,6 +27,7 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
 set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/./App"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/./App/FreeRTOS"
+  "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/./App/LCD"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/./App/Led"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/./CMyLib"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/./CMyLib/Define"
@@ -47,6 +48,10 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/FreeRTOS/userFreeRTOS.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.obj.d"
+  "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_fonts.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj.d"
+  "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_image.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj.d"
+  "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_model.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj.d"
+  "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/spi.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj.d"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/Led/led.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.obj.d"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/CMyLib/Define/define.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Define/define.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Define/define.c.obj.d"
   "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/CMyLib/Dts/dts.c" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Dts/dts.c.obj" "gcc" "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Dts/dts.c.obj.d"

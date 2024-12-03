@@ -9,6 +9,7 @@ extern "C" {
 #include "cMyLib.h"
 #include "led.h"
 #include "userFreeRTOS.h"
+#include "lcd_model.h"
 
 #ifdef __cplusplus
 }
