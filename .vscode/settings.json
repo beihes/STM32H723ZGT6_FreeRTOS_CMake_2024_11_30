@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "usart.h": "c",
+        "main.h": "c",
+        "stm32h7xx_hal.h": "c",
+        "stdio.h": "c",
+        "freertos.h": "c",
+        "task.h": "c",
+        "dts.h": "c",
+        "cmsis_os.h": "c"
+    }
+}

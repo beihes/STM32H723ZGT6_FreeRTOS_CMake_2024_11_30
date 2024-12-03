@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/System/Startup/startup_stm32h723zgtx.s
+

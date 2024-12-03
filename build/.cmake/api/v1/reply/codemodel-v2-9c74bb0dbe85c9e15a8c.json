@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "STM32H723ZGT6_CMake_2024_11_30",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "STM32H723ZGT6_CMake_2024_11_30.elf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-STM32H723ZGT6_CMake_2024_11_30.elf-Release-0734a08fb0db4b75a185.json",
+					"name" : "STM32H723ZGT6_CMake_2024_11_30.elf",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/build",
+		"source" : "D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
