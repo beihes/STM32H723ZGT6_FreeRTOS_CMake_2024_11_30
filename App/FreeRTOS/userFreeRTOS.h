@@ -7,10 +7,12 @@ extern "C" {
 
 #include "cMyLib.h"
 #include "led.h"
+#include "lcd_model.h"
 
 void StartDefaultTask(void *argument);
 void Start_flash_led(void *argument);
 void Start_usart1_printf(void *argument);
+void Start_lcd_printf(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 

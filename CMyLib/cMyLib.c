@@ -2,7 +2,7 @@
 
 void CJSON_Test()
 {
-    char json_data[] = "{\"name\":\"刘德华\",\"age\":40}";
+    char json_data[] = "{\"name\":\"Test\",\"age\":40}";
     cJSON *json_list = cJSON_Parse(json_data);
     if (!json_list)
     {
