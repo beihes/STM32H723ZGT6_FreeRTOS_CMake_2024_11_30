@@ -7,7 +7,7 @@ extern "C" {
 
 #include "cMyLib.h"
 #include "led.h"
-#include "lcd_model.h"
+#include "lcdMode.h"
 
 void StartDefaultTask(void *argument);
 void Start_flash_led(void *argument);

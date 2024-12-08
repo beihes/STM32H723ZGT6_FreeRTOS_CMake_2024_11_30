@@ -883,6 +883,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "App/LCD/lcdMode.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "App/LCD/lcd_fonts.c",
 			"sourceGroupIndex" : 0
 		},
@@ -895,13 +901,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "App/LCD/lcd_model.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "App/LCD/spi.c",
+			"path" : "App/LCD/lcd_spi_154.c",
 			"sourceGroupIndex" : 0
 		},
 		{

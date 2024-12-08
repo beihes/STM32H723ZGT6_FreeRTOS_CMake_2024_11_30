@@ -36,7 +36,10 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-static int32_t temperature;
+cJSON *cJSONData = NULL;
+cJSON_Hooks cJSONHooks = {.free_fn = vPortFree, .malloc_fn = pvPortMalloc};
+char *cJSONStr = NULL;
+CoreData coreData = {.name = "STM32H732ZGT6", .temperature = 0, .time = 0};
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -80,9 +83,12 @@ const osThreadAttr_t lcd_printf_attributes = {
 void MX_FREERTOS_Init(void)
 {
     /* USER CODE BEGIN Init */
-
+    cJSON_InitHooks(&cJSONHooks);
+    cJSONData = cJSON_CreateObject();
+    cJSON_AddStringToObject(cJSONData, "name", "STM32H732ZGT6");
+    cJSON_AddNumberToObject(cJSONData, "temperature", 0);
+    cJSON_AddNumberToObject(cJSONData, "time", xTaskGetTickCount());
     /* USER CODE END Init */
-
     /* USER CODE BEGIN RTOS_MUTEX */
     /* add mutexes, ... */
     /* USER CODE END RTOS_MUTEX */
@@ -153,7 +159,7 @@ void Start_flash_led(void *argument)
     for (;;)
     {
         LED1_Toggle;
-        osDelay(5000);
+        osDelay(1000);
     }
     /* USER CODE END Start_flash_led */
 }
@@ -171,10 +177,20 @@ void Start_usart1_printf(void *argument)
     /* Infinite loop */
     for (;;)
     {
-        HAL_DTS_GetTemperature(&hdts, &temperature);
-        printf("CPU Temperature : %ld\r\n", temperature);
-        printf("Time:%ld\r\n", xTaskGetTickCount());
-        osDelay(1000);
+        HAL_DTS_GetTemperature(&hdts, &(coreData.temperature));
+        // cJSON *midCJSON = cJSON_GetObjectItem(cJSONData, "temperature");
+        // if (midCJSON)
+        // {
+        //     cJSON_SetNumberValue(midCJSON, temperature);
+        // }
+        // midCJSON = cJSON_GetObjectItem(cJSONData, "time");
+        // if (midCJSON)
+        // {
+        //     cJSON_SetNumberValue(midCJSON, xTaskGetTickCount()/1000);
+        // }
+        // cJSONStr = cJSON_Print(cJSONData);
+        // printf("%s\r\n", cJSONStr);
+        osDelay(500);
     }
     /* USER CODE END Start_usart1_printf */
 }
@@ -185,20 +201,36 @@ void Start_lcd_printf(void *argument)
 {
     /* USER CODE BEGIN Start_usart1_printf */
     /* Infinite loop */
-    char midChar[64] = "";
-    LCD_SetDirection(Direction_V);
-    LCD_SetTextFont(&CH_Font24); // 设置2424中文字体,ASCII字体对应为2412
-    LCD_SetBackColor(LCD_BLACK);
-    LCD_SetColor(LCD_WHITE); // 设置画笔颜色
+    char midStr[64] = "";
+    LCD_SetDirection(Direction_V_Flip);
+    LCD_SetBackColor(LCD_BLACK); //	设置背景色
+    LCD_Clear();                 // 清屏
+    LCD_SetAsciiFont(&ASCII_Font12);
+    TickType_t midTime = xTaskGetTickCount();
+    uint16_t fps = 0;
     for (;;)
     {
-        strcpy(midChar, "");
-        sprintf(midChar, "CPU T:%ld", temperature);
-        LCD_DisplayText(10, 70, midChar);
-        strcpy(midChar, "");
-        sprintf(midChar, "Time:%ld", xTaskGetTickCount());
-        LCD_DisplayText(10, 100, midChar);
-        osDelay(10);
+        coreData.time = xTaskGetTickCount();
+        if (coreData.time - midTime < 1000)
+        {
+            fps++;
+        }
+        else
+        {
+            sprintf(midStr, "FPS:%3d", fps);
+            LCD_DisplayText(10, 34, midStr);
+            fps = 0;
+            midTime = coreData.time;
+        }
+        sprintf(midStr, "CPU T:%ld", coreData.temperature);
+        LCD_DisplayText(10, 10, midStr);
+        strcpy(midStr, "");
+        sprintf(midStr, "Time:%ld", coreData.time);
+        LCD_DisplayText(10, 22, midStr);
+        Clock_Needle(coreData.time / 720000, 32);
+        Clock_Needle(coreData.time / 60000, 48);
+        Clock_Sec(coreData.time / 1000, 64);
+        User_Image(240 - 96 - 1, 0, "BHS", (uint16_t *)Image_BHS_32x32);
     }
     /* USER CODE END Start_usart1_printf */
 }

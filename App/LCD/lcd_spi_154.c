@@ -1,38 +1,34 @@
-/* USER CODE BEGIN Header */
-/**
- ******************************************************************************
- * @file    spi.c
- * @brief   This file provides code for the configuration
- *          of the SPI instances.
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2024 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
- */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
-#include "spi.h"
+/***
+    ************************************************************************************************************************************************************************************************
+    *	@version V1.0
+    *	@author  鹿小班科技
+   **********************************************************************************************************************************************************************************************
+   *  @description
+    *
+    *	实验平台：鹿小班STM32H723ZGT6核心板 （型号：LXB723ZG-P1）
+    * 客服微信：19949278543
+    *
+>>>>> 重要说明：
+    *
+    *  1.屏幕配置为16位RGB565格式
+    *  2.SPI通信速度为 68.75M
+   *
+>>>>> 其他说明：
+    *
+    *	1. 中文字库使用的是小字库，即用到了对应的汉字再去取模，用户可以根据需求自行增添或删减
+    *	2. 各个函数的功能和使用可以参考函数的说明
+    *
+    *********************************************************************************************************************************************************************************************LXB*****
+***/
 
-/* USER CODE BEGIN 0 */
+#include "lcd_spi_154.h"
 
-SPI_HandleTypeDef hspi6;
+SPI_HandleTypeDef hspi6; // SPI_HandleTypeDef 结构体变量
 
 #define LCD_SPI hspi6 // SPI局部宏，方便修改和移植
 
 static pFONT *LCD_AsciiFonts; // 英文字体，ASCII字符集
 static pFONT *LCD_CHFonts;    // 中文字体（同时也包含英文字体）
-
-static int _pointx = 0;
-static int _pointy = 0;
-unsigned char ScreenBuffer[8][240] = {0}; // 8  240
-TypeRoate _RoateValue = {{0, 0}, 0, 1};   // 保存旋转操作的相关信息
 
 // 因为这类SPI的屏幕，每次更新显示时，需要先配置坐标区域、再写显存，
 // 在显示字符时，如果是一个个点去写坐标写显存，会非常慢，
@@ -40,6 +36,11 @@ TypeRoate _RoateValue = {{0, 0}, 0, 1};   // 保存旋转操作的相关信息
 // 用户可以根据实际情况去修改此处缓冲区的大小，
 // 例如，用户需要显示32*32的汉字时，需要的大小为 32*32*2 = 2048 字节（每个像素点占2字节）
 uint16_t LCD_Buff[1024]; // LCD缓冲区，16位宽（每个像素点占2字节）
+
+static int  _pointx=0;
+static int 	_pointy=0;
+unsigned char ScreenBuffer[8][240]={0};   //8  240
+TypeRoate _RoateValue={{0,0},0,1}; //保存旋转操作的相关信息
 
 struct // LCD相关参数结构体
 {
@@ -58,99 +59,46 @@ struct // LCD相关参数结构体
 HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint32_t Size);
 HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pData, uint32_t Size);
 
-/* USER CODE END 0 */
+/*************************************************************************************************
+ *	函 数 名:	HAL_SPI_MspInit
+ *	入口参数:	hspi - SPI_HandleTypeDef定义的变量，即表示定义的 SPI 句柄
+ *	返 回 值:	无
+ *	函数功能:	初始化 SPI 引脚
+ *	说    明:	无
+ *************************************************************************************************/
 
-/* SPI6 init function */
-void MX_SPI6_Init(void)
+void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
 {
-
-    /* USER CODE BEGIN SPI6_Init 0 */
-
-    /* USER CODE END SPI6_Init 0 */
-
-    /* USER CODE BEGIN SPI6_Init 1 */
-
-    /* USER CODE END SPI6_Init 1 */
-    hspi6.Instance = SPI6;
-    hspi6.Init.Mode = SPI_MODE_MASTER;
-    hspi6.Init.Direction = SPI_DIRECTION_1LINE;
-    hspi6.Init.DataSize = SPI_DATASIZE_8BIT;
-    hspi6.Init.CLKPolarity = SPI_POLARITY_LOW;
-    hspi6.Init.CLKPhase = SPI_PHASE_1EDGE;
-    hspi6.Init.NSS = SPI_NSS_HARD_OUTPUT;
-    hspi6.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-    hspi6.Init.FirstBit = SPI_FIRSTBIT_MSB;
-    hspi6.Init.TIMode = SPI_TIMODE_DISABLE;
-    hspi6.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-    hspi6.Init.CRCPolynomial = 0x0;
-    hspi6.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
-    hspi6.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
-    hspi6.Init.FifoThreshold = SPI_FIFO_THRESHOLD_02DATA;
-    hspi6.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
-    hspi6.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
-    hspi6.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
-    hspi6.Init.MasterInterDataIdleness = SPI_MASTER_INTERDATA_IDLENESS_00CYCLE;
-    hspi6.Init.MasterReceiverAutoSusp = SPI_MASTER_RX_AUTOSUSP_DISABLE;
-    hspi6.Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_DISABLE;
-    hspi6.Init.IOSwap = SPI_IO_SWAP_DISABLE;
-
-    if (HAL_SPI_Init(&hspi6) != HAL_OK)
-    {
-        Error_Handler();
-    }
-    /* USER CODE BEGIN SPI6_Init 2 */
-
-    /* USER CODE END SPI6_Init 2 */
-}
-
-void HAL_SPI_MspInit(SPI_HandleTypeDef *spiHandle)
-{
-
     GPIO_InitTypeDef GPIO_InitStruct = {0};
-    RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
-    if (spiHandle->Instance == SPI6)
+    if (hspi->Instance == SPI6)
     {
-        /* USER CODE BEGIN SPI6_MspInit 0 */
+        __HAL_RCC_SPI6_CLK_ENABLE(); // 使能SPI时钟
 
-        /* USER CODE END SPI6_MspInit 0 */
-
-        /** Initializes the peripherals clock
-         */
-        PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SPI6;
-        PeriphClkInitStruct.Spi6ClockSelection = RCC_SPI6CLKSOURCE_D3PCLK1;
-        if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
-        {
-            Error_Handler();
-        }
-
-        /* SPI6 clock enable */
-        __HAL_RCC_SPI6_CLK_ENABLE();
-
-        __HAL_RCC_GPIOG_CLK_ENABLE();
-
+        __HAL_RCC_GPIOG_CLK_ENABLE();  // 使能 SPI GPIO 时钟
         GPIO_LDC_Backlight_CLK_ENABLE; // 使能 背光        引脚时钟
         GPIO_LDC_DC_CLK_ENABLE;        // 使能 数据指令选择 引脚时钟
 
-        /**SPI6 GPIO Configuration
-        PG8     ------> SPI6_NSS
-        PG13     ------> SPI6_SCK
-        PG14     ------> SPI6_MOSI
-        */
+        /******************************************************
+                PG8     ------> SPI6_NSS
+                PG13    ------> SPI6_SCK
+                PG14    ------> SPI6_MOSI
 
+              PG12    ------> 背光  引脚
+              PG15    ------> 数据指令选择 引脚
+        *******************************************************/
+
+        // 初始化 SCK、MOSI、片选引脚
         GPIO_InitStruct.Pin = GPIO_PIN_8 | GPIO_PIN_13 | GPIO_PIN_14;
-        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-        GPIO_InitStruct.Alternate = GPIO_AF5_SPI6;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;            // 复用推挽输出
+        GPIO_InitStruct.Pull = GPIO_NOPULL;                // 无上下拉
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH; // 最高速度等级
+        GPIO_InitStruct.Alternate = GPIO_AF5_SPI6;         // 复用到SPI，复用线5
         HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
-        /* USER CODE BEGIN SPI6_MspInit 1 */
-
         // 初始化 背光 引脚
-
         GPIO_InitStruct.Pin = LCD_Backlight_PIN;             // 背光 引脚
         GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;          // 推挽输出模式
-        GPIO_InitStruct.Pull = GPIO_NOPULL;                  // 下拉，默认保持低电平
+        GPIO_InitStruct.Pull = GPIO_PULLDOWN;                // 下拉，默认保持低电平
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;         // 速度等级低
         HAL_GPIO_Init(LCD_Backlight_PORT, &GPIO_InitStruct); // 初始化
 
@@ -160,52 +108,61 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *spiHandle)
         GPIO_InitStruct.Pull = GPIO_NOPULL;           // 无上下拉
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;  // 速度等级低
         HAL_GPIO_Init(LCD_DC_PORT, &GPIO_InitStruct); // 初始化
-
-        /* USER CODE END SPI6_MspInit 1 */
     }
 }
 
-void HAL_SPI_MspDeInit(SPI_HandleTypeDef *spiHandle)
+/*************************************************************************************************
+ *	函 数 名:	MX_SPI6_Init
+ *	入口参数:	无
+ *	返 回 值:	无
+ *	函数功能:	初始化SPI配置
+ *	说    明:使用硬件片选
+ *************************************************************************************************/
+
+void MX_SPI6_Init(void)
 {
+    LCD_SPI.Instance = SPI6;                      //	使用SPI
+    LCD_SPI.Init.Mode = SPI_MODE_MASTER;          //	主机模式
+    LCD_SPI.Init.Direction = SPI_DIRECTION_1LINE; //	单线
+    LCD_SPI.Init.DataSize = SPI_DATASIZE_8BIT;    //	8位数据宽度
+    LCD_SPI.Init.CLKPolarity = SPI_POLARITY_LOW;  //	CLK空闲时保持低电平
+    LCD_SPI.Init.CLKPhase = SPI_PHASE_1EDGE;      //	数据在CLK第一个边沿有效
+    LCD_SPI.Init.NSS = SPI_NSS_HARD_OUTPUT;       //	使用硬件片选
 
-    if (spiHandle->Instance == SPI6)
-    {
-        /* USER CODE BEGIN SPI6_MspDeInit 0 */
+    // 在 main.c文件 SystemClock_Config()函数里设置 SPI6 的内核时钟为137.5M，然后再经过2分频得到 68.75M 的SCK驱动时钟
+    LCD_SPI.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
 
-        /* USER CODE END SPI6_MspDeInit 0 */
-        /* Peripheral clock disable */
-        __HAL_RCC_SPI6_CLK_DISABLE();
+    LCD_SPI.Init.FirstBit = SPI_FIRSTBIT_MSB;                                          //	高位在先
+    LCD_SPI.Init.TIMode = SPI_TIMODE_DISABLE;                                          //	禁止TI模式
+    LCD_SPI.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;                          //	禁止CRC
+    LCD_SPI.Init.CRCPolynomial = 0x0;                                                  // CRC校验项，这里用不到
+    LCD_SPI.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;                                     //	不使用片选脉冲模式
+    LCD_SPI.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;                                   //	片选低电平有效
+    LCD_SPI.Init.FifoThreshold = SPI_FIFO_THRESHOLD_02DATA;                            //	FIFO阈值
+    LCD_SPI.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN; // 发送端CRC初始化模式，这里用不到
+    LCD_SPI.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN; // 接收端CRC初始化模式，这里用不到
+    LCD_SPI.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;                    // 额外延迟周期为0
+    LCD_SPI.Init.MasterInterDataIdleness = SPI_MASTER_INTERDATA_IDLENESS_00CYCLE;      // 主机模式下，两个数据帧之间的延迟周期
+    LCD_SPI.Init.MasterReceiverAutoSusp = SPI_MASTER_RX_AUTOSUSP_DISABLE;              // 禁止自动接收管理
+    LCD_SPI.Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_DISABLE;                 //	主机模式下，禁止SPI保持当前引脚状态
+    LCD_SPI.Init.IOSwap = SPI_IO_SWAP_DISABLE;                                         // 不交换MOSI和MISO
 
-        /**SPI6 GPIO Configuration
-        PG8     ------> SPI6_NSS
-        PG13     ------> SPI6_SCK
-        PG14     ------> SPI6_MOSI
-        */
-
-        HAL_GPIO_DeInit(GPIOG, GPIO_PIN_8 | GPIO_PIN_13 | GPIO_PIN_14);
-
-        /* USER CODE BEGIN SPI6_MspDeInit 1 */
-
-        /* USER CODE END SPI6_MspDeInit 1 */
-    }
+    HAL_SPI_Init(&LCD_SPI);
 }
 
-/* USER CODE BEGIN 1 */
-
-/****************************************************************************************************************************************
- *	函 数 名: LCD_WriteCommand
- *
- *	入口参数: lcd_command - 需要写入的控制指令
- *
- *	函数功能: 用于向屏幕控制器写入指令
- *
- ****************************************************************************************************************************************/
+/*****************************************************************************************
+ *	函 数 名: LCD_WriteCMD
+ *	入口参数: CMD - 需要写入的控制指令
+ *	返 回 值: 无
+ *	函数功能: 用于写入控制字
+ *	说    明: 无
+ ******************************************************************************************/
 
 void LCD_WriteCommand(uint8_t lcd_command)
 {
     LCD_DC_Command; // 数据指令选择 引脚输出低电平，代表本次传输 指令
 
-    HAL_SPI_Transmit(&LCD_SPI, &lcd_command, 1, 1000); // 启动SPI传输
+    HAL_SPI_Transmit(&LCD_SPI, &lcd_command, 1, 1000);
 }
 
 /****************************************************************************************************************************************
@@ -461,7 +418,7 @@ void LCD_SetDirection(uint8_t direction)
     {
         LCD_WriteCommand(0x36);   // 显存访问控制 指令，用于设置访问显存的方式
         LCD_WriteData_8bit(0x70); // 横屏显示
-        LCD.X_Offset = 20;        // 设置控制器坐标偏移量
+        LCD.X_Offset = 0;         // 设置控制器坐标偏移量
         LCD.Y_Offset = 0;
         LCD.Width = LCD_Height; // 重新赋值长、宽
         LCD.Height = LCD_Width;
@@ -471,7 +428,7 @@ void LCD_SetDirection(uint8_t direction)
         LCD_WriteCommand(0x36);   // 显存访问控制 指令，用于设置访问显存的方式
         LCD_WriteData_8bit(0x00); // 垂直显示
         LCD.X_Offset = 0;         // 设置控制器坐标偏移量
-        LCD.Y_Offset = 20;
+        LCD.Y_Offset = 0;
         LCD.Width = LCD_Width; // 重新赋值长、宽
         LCD.Height = LCD_Height;
     }
@@ -479,7 +436,7 @@ void LCD_SetDirection(uint8_t direction)
     {
         LCD_WriteCommand(0x36);   // 显存访问控制 指令，用于设置访问显存的方式
         LCD_WriteData_8bit(0xA0); // 横屏显示，并上下翻转，RGB像素格式
-        LCD.X_Offset = 20;        // 设置控制器坐标偏移量
+        LCD.X_Offset = 80;        // 设置控制器坐标偏移量
         LCD.Y_Offset = 0;
         LCD.Width = LCD_Height; // 重新赋值长、宽
         LCD.Height = LCD_Width;
@@ -489,7 +446,7 @@ void LCD_SetDirection(uint8_t direction)
         LCD_WriteCommand(0x36);   // 显存访问控制 指令，用于设置访问显存的方式
         LCD_WriteData_8bit(0xC0); // 垂直显示 ，并上下翻转，RGB像素格式
         LCD.X_Offset = 0;         // 设置控制器坐标偏移量
-        LCD.Y_Offset = 20;
+        LCD.Y_Offset = 80;
         LCD.Width = LCD_Width; // 重新赋值长、宽
         LCD.Height = LCD_Height;
     }
@@ -652,6 +609,7 @@ void LCD_DisplayChar(uint16_t x, uint16_t y, uint8_t c)
  *	说    明:	1. 可设置要显示的字体，例如使用 LCD_SetAsciiFont(&ASCII_Font24) 设置为 2412的ASCII字体
  *					2.	可设置要显示的颜色，例如使用 LCD_SetColor(0x0000FF) 设置为蓝色
  *					3. 可设置对应的背景色，例如使用 LCD_SetBackColor(0x000000) 设置为黑色的背景色
+ *					4. 使用示例 LCD_DisplayString( 10, 10, "LXB") ，在起始坐标为(10,10)的地方显示字符串"LXB"
  *
  *****************************************************************************************************************************************/
 
@@ -782,8 +740,9 @@ void LCD_DisplayChinese(uint16_t x, uint16_t y, char *pText)
  *	说    明:	1. 可设置要显示的字体，例如使用 LCD_SetTextFont(&CH_Font24) 设置为 2424的中文字体以及2412的ASCII字符字体
  *					2.	可设置要显示的颜色，例如使用 LCD_SetColor(0xff0000FF) 设置为蓝色
  *					3. 可设置对应的背景色，例如使用 LCD_SetBackColor(0xff000000) 设置为黑色的背景色
+ *					4. 使用示例 LCD_DisplayChinese( 10, 10, "鹿小班科技STM32") ，在坐标(10,10)显示字符串"鹿小班科技STM32"
  *
- **********************************************************************************************************************************************/
+ **********************************************************************************************************************************LXB*******/
 
 void LCD_DisplayText(uint16_t x, uint16_t y, char *pText)
 {
@@ -800,7 +759,8 @@ void LCD_DisplayText(uint16_t x, uint16_t y, char *pText)
         {
             LCD_DisplayChinese(x, y, pText); // 显示汉字
             x += LCD_CHFonts->Width;         // 水平坐标调到下一个字符处
-            pText += 2;                      // 字符串地址+2，汉字的编码要2字节
+            //如果是UTF-8，就换为3，UINCODE就换为2
+            pText += 3;                      // 字符串地址+2，汉字的编码要2字节
         }
     }
 }
@@ -813,7 +773,7 @@ void LCD_DisplayText(uint16_t x, uint16_t y, char *pText)
  *	函数功能:	设置变量显示时多余位补0还是补空格，可输入参数 Fill_Space 填充空格，Fill_Zero 填充零
  *
  *	说    明:   1. 只有 LCD_DisplayNumber() 显示整数 和 LCD_DisplayDecimals()显示小数 这两个函数用到
- *					    2. 使用示例 LCD_ShowNumMode(Fill_Zero) 设置多余位填充0，例如 123 可以显示为 000123
+ *					2. 使用示例 LCD_ShowNumMode(Fill_Zero) 设置多余位填充0，例如 123 可以显示为 000123
  *
  *****************************************************************************************************************************************/
 
@@ -1020,7 +980,7 @@ void LCD_DrawLine_V(uint16_t x, uint16_t y, uint16_t height)
  *				 2. 要绘制的区域不能超过屏幕的显示区域
  *            3. 如果只是画 水平 的线，优先使用此函数，速度比 LCD_DrawLine 快很多
  *  性能测试：
- **********************************************************************************************************************************************/
+ **********************************************************************************************************************************LXB*******/
 
 void LCD_DrawLine_H(uint16_t x, uint16_t y, uint16_t width)
 {
@@ -1362,451 +1322,75 @@ void LCD_CopyBuffer(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
 }
 
 /*****************************************************************************************
- * 函 数 名: DrawRoundRect
- * 入口参数: int x - 圆角矩形左上角横坐标
- *           int y - 圆角矩形左上角纵坐标
- *           unsigned char w - 圆角矩形宽度
- *           unsigned char h - 圆角矩形高度
- *           unsigned char r - 圆角半径
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制圆角矩形
- * 说    明: 通过绘制水平和垂直线，以及在四个角上绘制圆弧，实现圆角矩形的绘制。函数中使
- *           用 DrawCircleHelper 函数绘制圆角矩形的四个圆角。
- ******************************************************************************************/
-void DrawRoundRect(int x, int y, unsigned char w, unsigned char h, unsigned char r)
+* 函 数 名: MoveTo
+* 入口参数: int x - 移动到的目标横坐标
+*           int y - 移动到的目标纵坐标
+* 返 回 值: 无
+* 函数功能: 移动绘图光标到指定的目标位置。
+* 说    明: 将绘图光标的当前位置更新为给定的目标位置，以便后续的绘图操作发生在该目标位置上。
+******************************************************************************************/
+void MoveTo(int x, int y)
 {
-    // 绘制上下两条水平线
-    LCD_DrawLine_H(x + r, y, w - 2 * r);         // 上边
-    LCD_DrawLine_H(x + r, y + h - 1, w - 2 * r); // 下边
-
-    // 绘制左右两条垂直线
-    LCD_DrawLine_V(x, y + r, h - 2 * r);         // 左边
-    LCD_DrawLine_V(x + w - 1, y + r, h - 2 * r); // 右边
-
-    // 绘制四个圆角
-    DrawCircleHelper(x + r, y + r, r, 1);                 // 左上角
-    DrawCircleHelper(x + w - r - 1, y + r, r, 2);         // 右上角
-    DrawCircleHelper(x + w - r - 1, y + h - r - 1, r, 4); // 右下角
-    DrawCircleHelper(x + r, y + h - r - 1, r, 8);         // 左下角
+    _pointx = x;
+    _pointy = y;
 }
 
-/*****************************************************************************************
- * 函 数 名: DrawfillRoundRect
- * 入口参数: int x - 圆角矩形左上角横坐标
- *           int y - 圆角矩形左上角纵坐标
- *           unsigned char w - 圆角矩形宽度
- *           unsigned char h - 圆角矩形高度
- *           unsigned char r - 圆角半径
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制填充的圆角矩形
- * 说    明: 通过绘制一条水平线和在两个角上绘制填充的圆弧，实现填充的圆角矩形的绘制。函数
- *           中使用 DrawFillCircleHelper 函数绘制两个角的填充圆弧，同时使用 LCD_FillRect
- *           函数绘制矩形的中间部分。
- ******************************************************************************************/
-void DrawfillRoundRect(int x, int y, unsigned char w, unsigned char h, unsigned char r)
-{
-    // 绘制矩形的中间部分
-    LCD_FillRect(x + r, y, w - 2 * r, h);
 
-    // 绘制两个角的填充圆弧
-    DrawFillCircleHelper(x + w - r - 1, y + r, r, 1, h - 2 * r - 1); // 右上角
-    DrawFillCircleHelper(x + r, y + r, r, 2, h - 2 * r - 1);         // 左上角
+/*****************************************************************************************
+* 函 数 名: LineTo
+* 入口参数: int x - 目标横坐标
+*           int y - 目标纵坐标
+* 返 回 值: 无
+* 函数功能: 在当前光标位置与指定目标位置之间绘制直线。
+* 说    明: 该函数绘制从当前光标位置到目标位置的直线，并将光标更新为目标位置。
+******************************************************************************************/
+void LineTo(int x, int y)
+{
+    LCD_DrawLine(_pointx, _pointy, x, y);
+    _pointx = x;
+    _pointy = y;
 }
 
-/*****************************************************************************************
- * 函 数 名: DrawCircleHelper
- * 入口参数: int x0 - 圆心横坐标
- *           int y0 - 圆心纵坐标
- *           unsigned char r - 圆半径
- *           unsigned char cornername - 圆的四个角的组合值
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制圆的一部分，可选择绘制的圆角
- * 说    明: 使用 Bresenham 算法绘制圆的一部分，可以选择在四个角中的一个或多个绘制圆角。
- *           圆角的组合值由 cornername 决定，每个位代表一个角，1 代表绘制，0 代表不绘制。
- *           函数中使用 LCD_DrawPoint 函数绘制每个像素点。
- ******************************************************************************************/
-void DrawCircleHelper(int x0, int y0, unsigned char r, unsigned char cornername)
-{
-    int f = 1 - r;
-    int ddF_x = 1;
-    int ddF_y = -2 * r;
-    int x = 0;
-    int y = r;
-
-    while (x < y)
-    {
-        if (f >= 0)
-        {
-            y--;
-            ddF_y += 2;
-            f += ddF_y;
-        }
-
-        x++;
-        ddF_x += 2;
-        f += ddF_x;
-
-        if (cornername & 0x4)
-        {
-            LCD_DrawPoint(x0 + x, y0 + y, LIGHT_GREEN);
-            LCD_DrawPoint(x0 + y, y0 + x, LIGHT_GREEN);
-        }
-        if (cornername & 0x2)
-        {
-            LCD_DrawPoint(x0 + x, y0 - y, LIGHT_GREEN);
-            LCD_DrawPoint(x0 + y, y0 - x, LIGHT_GREEN);
-        }
-        if (cornername & 0x8)
-        {
-            LCD_DrawPoint(x0 - y, y0 + x, LIGHT_GREEN);
-            LCD_DrawPoint(x0 - x, y0 + y, LIGHT_GREEN);
-        }
-        if (cornername & 0x1)
-        {
-            LCD_DrawPoint(x0 - y, y0 - x, LIGHT_GREEN);
-            LCD_DrawPoint(x0 - x, y0 - y, LIGHT_GREEN);
-        }
-    }
-}
 
 /*****************************************************************************************
- * 函 数 名: DrawFillCircleHelper
- * 入口参数: int x0 - 圆心横坐标
- *           int y0 - 圆心纵坐标
- *           unsigned char r - 圆半径
- *           unsigned char cornername - 圆的四个角的组合值
- *           int delta - 修正值，用于微调绘制效果
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制填充圆的一部分，可选择绘制的圆角
- * 说    明: 使用 Bresenham 算法绘制填充圆的一部分，可以选择在两个角中的一个或两个绘制圆角。
- *           圆角的组合值由 cornername 决定，每个位代表一个角，1 代表绘制，0 代表不绘制。
- *           函数中使用 LCD_DrawLine_V 函数绘制每列像素点。
- ******************************************************************************************/
-void DrawFillCircleHelper(int x0, int y0, unsigned char r, unsigned char cornername, int delta)
+* 函 数 名: SetRotateValue
+* 入口参数: int x - 旋转中心横坐标
+*           int y - 旋转中心纵坐标
+*           float angle - 旋转角度（弧度）
+*           int direct - 旋转方向（0为顺时针，1为逆时针）
+* 返 回 值: 无
+* 函数功能: 设置旋转参数，包括旋转中心、旋转角度和旋转方向。
+* 说    明: 该函数通过调用其他设置函数，实现了对旋转参数的一次性设置。
+******************************************************************************************/
+void SetRotateValue(int x, int y, float angle, int direct)
 {
-    int f = 1 - r;
-    int ddF_x = 1;
-    int ddF_y = -2 * r;
-    int x = 0;
-    int y = r;
-
-    while (x < y)
-    {
-        if (f >= 0)
-        {
-            y--;
-            ddF_y += 2;
-            f += ddF_y;
-        }
-
-        x++;
-        ddF_x += 2;
-        f += ddF_x;
-
-        if (cornername & 0x1)
-        {
-            LCD_DrawLine_V(x0 + x, y0 - y, 2 * y + 1 + delta);
-            LCD_DrawLine_V(x0 + y, y0 - x, 2 * x + 1 + delta);
-        }
-
-        if (cornername & 0x2)
-        {
-            LCD_DrawLine_V(x0 - x, y0 - y, 2 * y + 1 + delta);
-            LCD_DrawLine_V(x0 - y, y0 - x, 2 * x + 1 + delta);
-        }
-    }
-}
-
-/*****************************************************************************************
- * 函 数 名: DrawFillEllipse
- * 入口参数: int x0 - 椭圆中心横坐标
- *           int y0 - 椭圆中心纵坐标
- *           int rx - 椭圆 x 轴半径
- *           int ry - 椭圆 y 轴半径
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制填充椭圆
- * 说    明: 使用 Bresenham 算法绘制填充椭圆。函数中使用 LCD_DrawLine_V 函数绘制每列像素点。
- ******************************************************************************************/
-void DrawFillEllipse(int x0, int y0, int rx, int ry)
-{
-    int x, y;
-    int xchg, ychg;
-    int err;
-    int rxrx2;
-    int ryry2;
-    int stopx, stopy;
-
-    rxrx2 = rx;
-    rxrx2 *= rx;
-    rxrx2 *= 2;
-
-    ryry2 = ry;
-    ryry2 *= ry;
-    ryry2 *= 2;
-
-    x = rx;
-    y = 0;
-
-    xchg = 1;
-    xchg -= rx;
-    xchg -= rx;
-    xchg *= ry;
-    xchg *= ry;
-
-    ychg = rx;
-    ychg *= rx;
-
-    err = 0;
-
-    stopx = ryry2;
-    stopx *= rx;
-    stopy = 0;
-
-    while (stopx >= stopy)
-    {
-        // 绘制椭圆的四个象限的一列像素点
-        LCD_DrawLine_V(x0 + x, y0 - y, y + 1);
-        LCD_DrawLine_V(x0 - x, y0 - y, y + 1);
-        LCD_DrawLine_V(x0 + x, y0, y + 1);
-        LCD_DrawLine_V(x0 - x, y0, y + 1);
-
-        y++;
-        stopy += rxrx2;
-        err += ychg;
-        ychg += rxrx2;
-
-        if (2 * err + xchg > 0)
-        {
-            x--;
-            stopx -= ryry2;
-            err += xchg;
-            xchg += ryry2;
-        }
-    }
-
-    x = 0;
-    y = ry;
-
-    xchg = ry;
-    xchg *= ry;
-
-    ychg = 1;
-    ychg -= ry;
-    ychg -= ry;
-    ychg *= rx;
-    ychg *= rx;
-
-    err = 0;
-
-    stopx = 0;
-    stopy = rxrx2;
-    stopy *= ry;
-
-    while (stopx <= stopy)
-    {
-        // 绘制椭圆的四个象限的一列像素点
-        LCD_DrawLine_V(x0 + x, y0 - y, y + 1);
-        LCD_DrawLine_V(x0 - x, y0 - y, y + 1);
-        LCD_DrawLine_V(x0 + x, y0, y + 1);
-        LCD_DrawLine_V(x0 - x, y0, y + 1);
-
-        x++;
-        stopx += ryry2;
-        err += xchg;
-        xchg += ryry2;
-
-        if (2 * err + ychg > 0)
-        {
-            y--;
-            stopy -= rxrx2;
-            err += ychg;
-            ychg += rxrx2;
-        }
-    }
-}
-
-/*****************************************************************************************
- * 函 数 名: DrawTriangle
- * 入口参数: unsigned char x0 - 三角形第一个顶点横坐标
- *           unsigned char y0 - 三角形第一个顶点纵坐标
- *           unsigned char x1 - 三角形第二个顶点横坐标
- *           unsigned char y1 - 三角形第二个顶点纵坐标
- *           unsigned char x2 - 三角形第三个顶点横坐标
- *           unsigned char y2 - 三角形第三个顶点纵坐标
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制三角形
- * 说    明: 使用 LCD_DrawLine 函数绘制三角形的三条边。
- ******************************************************************************************/
-void DrawTriangle(unsigned char x0, unsigned char y0, unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2)
-{
-    LCD_DrawLine(x0, y0, x1, y1);
-    LCD_DrawLine(x1, y1, x2, y2);
-    LCD_DrawLine(x2, y2, x0, y0);
-}
-
-/*****************************************************************************************
- * 函 数 名: DrawFillTriangle
- * 入口参数: int x0 - 三角形第一个顶点横坐标
- *           int y0 - 三角形第一个顶点纵坐标
- *           int x1 - 三角形第二个顶点横坐标
- *           int y1 - 三角形第二个顶点纵坐标
- *           int x2 - 三角形第三个顶点横坐标
- *           int y2 - 三角形第三个顶点纵坐标
- * 返 回 值: 无
- * 函数功能: 在LCD上绘制填充的三角形
- * 说    明: 使用 LCD_DrawLine_H 函数绘制三角形的各个水平扫描线。
- ******************************************************************************************/
-void DrawFillTriangle(int x0, int y0, int x1, int y1, int x2, int y2)
-{
-    int a, b, y, last;
-    int dx01, dy01, dx02, dy02, dx12, dy12, sa = 0, sb = 0;
-
-    // 保证y0<=y1<=y2
-    if (y0 > y1)
-    {
-        SWAP(y0, y1);
-        SWAP(x0, x1);
-    }
-    if (y1 > y2)
-    {
-        SWAP(y2, y1);
-        SWAP(x2, x1);
-    }
-    if (y0 > y1)
-    {
-        SWAP(y0, y1);
-        SWAP(x0, x1);
-    }
-
-    // 三角形退化成线段或为单点
-    if (y0 == y2)
-    {
-        a = b = x0;
-        if (x1 < a)
-            a = x1;
-        else if (x1 > b)
-            b = x1;
-        if (x2 < a)
-            a = x2;
-        else if (x2 > b)
-            b = x2;
-
-        LCD_DrawLine_H(a, y0, b - a + 1);
-        return;
-    }
-
-    dx01 = x1 - x0;
-    dy01 = y1 - y0;
-    dx02 = x2 - x0;
-    dy02 = y2 - y0;
-    dx12 = x2 - x1;
-    dy12 = y2 - y1;
-    sa = 0;
-    sb = 0;
-
-    if (y1 == y2)
-    {
-        last = y1; // Include y1 scanline
-    }
-    else
-    {
-        last = y1 - 1; // Skip it
-    }
-
-    // 绘制上半部分三角形
-    for (y = y0; y <= last; y++)
-    {
-        a = x0 + sa / dy01;
-        b = x0 + sb / dy02;
-        sa += dx01;
-        sb += dx02;
-
-        if (a > b)
-        {
-            SWAP(a, b);
-        }
-
-        LCD_DrawLine_H(a, y, b - a + 1);
-    }
-
-    sa = dx12 * (y - y1);
-    sb = dx02 * (y - y0);
-
-    // 绘制下半部分三角形
-    for (; y <= y2; y++)
-    {
-        a = x1 + sa / dy12;
-        b = x0 + sb / dy02;
-        sa += dx12;
-        sb += dx02;
-
-        if (a > b)
-        {
-            SWAP(a, b);
-        }
-
-        LCD_DrawLine_H(a, y, b - a + 1);
-    }
-}
-
-/*****************************************************************************************
- * 函 数 名: DrawArc
- * 入口参数: int x - 圆心横坐标
- *           int y - 圆心纵坐标
- *           unsigned char r - 弧形半径
- *           int angle_start - 弧形起始角度
- *           int angle_end - 弧形终止角度
- * 返 回 值: 无
- * 函数功能: 绘制指定圆心、半径的弧形。
- * 说    明: 该函数从起始角度到终止角度以5度步进绘制弧形，使用了旋转函数和直线绘制函数。
- ******************************************************************************************/
-void DrawArc(int x, int y, unsigned char r, int angle_start, int angle_end)
-{
-    float i = 0;
-    TypeXY m, temp;
-    temp = GetXY();
     SetRotateCenter(x, y);
-    SetAngleDir(0);
-
-    if (angle_end > 360)
-        angle_end = 360;
-
-    SetAngle(0);
-    m = GetRotateXY(x, y + r);
-    MoveTo(m.x, m.y);
-
-    for (i = angle_start; i < angle_end; i += 5)
-    {
-        SetAngle(i);
-        m = GetRotateXY(x, y + r);
-        LineTo(m.x, m.y);
-    }
-
-    MoveTo(temp.x, temp.y);
+    SetAngleDir(direct);
+    SetAngle(angle);
 }
 
 /*****************************************************************************************
- * 函 数 名: GetXY
- * 返 回 值: TypeXY - 包含横坐标和纵坐标的二维坐标结构体
- * 函数功能: 获取坐标值的函数
- * 说    明: 返回一个 TypeXY 结构体，其中包含横坐标和纵坐标的值。
- ******************************************************************************************/
+* 函 数 名: GetXY
+* 返 回 值: TypeXY - 包含横坐标和纵坐标的二维坐标结构体
+* 函数功能: 获取坐标值的函数
+* 说    明: 返回一个 TypeXY 结构体，其中包含横坐标和纵坐标的值。
+******************************************************************************************/
 TypeXY GetXY(void)
 {
     TypeXY m;
-    m.x = _pointx; // 获取横坐标值
-    m.y = _pointy; // 获取纵坐标值
-    return m;      // 返回包含坐标值的结构体
+    m.x = _pointx;  // 获取横坐标值
+    m.y = _pointy;  // 获取纵坐标值
+    return m;       // 返回包含坐标值的结构体
 }
 
 /*****************************************************************************************
- * 函 数 名: SetRotateCenter
- * 入口参数: int x0 - 旋转中心的横坐标
- *           int y0 - 旋转中心的纵坐标
- * 返 回 值: 无
- * 函数功能: 设置旋转中心的坐标。
- * 说    明: 通过调用该函数，可以设置旋转操作的中心坐标，即围绕哪个点进行旋转。
- ******************************************************************************************/
+* 函 数 名: SetRotateCenter
+* 入口参数: int x0 - 旋转中心的横坐标
+*           int y0 - 旋转中心的纵坐标
+* 返 回 值: 无
+* 函数功能: 设置旋转中心的坐标。
+* 说    明: 通过调用该函数，可以设置旋转操作的中心坐标，即围绕哪个点进行旋转。
+******************************************************************************************/
 void SetRotateCenter(int x0, int y0)
 {
     _RoateValue.center.x = x0;
@@ -1814,48 +1398,65 @@ void SetRotateCenter(int x0, int y0)
 }
 
 /*****************************************************************************************
- * 函 数 名: SetAngleDir
- * 入口参数: int direction - 旋转方向，1为顺时针，-1为逆时针
- * 返 回 值: 无
- * 函数功能: 设置旋转的方向。
- * 说    明: 通过调用该函数，可以设置旋转的方向，1表示顺时针，-1表示逆时针。
- ******************************************************************************************/
+* 函 数 名: SetAngleDir
+* 入口参数: int direction - 旋转方向，1为顺时针，-1为逆时针
+* 返 回 值: 无
+* 函数功能: 设置旋转的方向。
+* 说    明: 通过调用该函数，可以设置旋转的方向，1表示顺时针，-1表示逆时针。
+******************************************************************************************/
 void SetAngleDir(int direction)
 {
     _RoateValue.direct = direction;
 }
 
 /*****************************************************************************************
- * 函 数 名: SetAngle
- * 入口参数: float angle - 旋转角度（单位：度）
- * 返 回 值: 无
- * 函数功能: 设置旋转的角度。
- * 说    明: 通过调用该函数，可以设置旋转的角度，单位为度。内部会将角度转换为弧度进行处理。
- ******************************************************************************************/
+* 函 数 名: SetAngle
+* 入口参数: float angle - 旋转角度（单位：度）
+* 返 回 值: 无
+* 函数功能: 设置旋转的角度。
+* 说    明: 通过调用该函数，可以设置旋转的角度，单位为度。内部会将角度转换为弧度进行处理。
+******************************************************************************************/
 void SetAngle(float angle)
 {
     _RoateValue.angle = RADIAN(angle);
 }
 
 /*****************************************************************************************
- * 函 数 名: Rotate
- * 入口参数: int x0 - 旋转中心的横坐标
- *           int y0 - 旋转中心的纵坐标
- *           int *x - 待旋转点的横坐标
- *           int *y - 待旋转点的纵坐标
- *           double angle - 旋转角度（弧度）
- *           int direction - 旋转方向，非零表示顺时针，零表示逆时针
- * 返 回 值: 无
- * 函数功能: 对指定点进行旋转。
- * 说    明: 通过调用该函数，可以对给定的点围绕指定中心进行旋转。旋转角度由 angle 参数指定，
- *           direction 参数指定旋转方向，非零表示顺时针，零表示逆时针。
- ******************************************************************************************/
+* 函 数 名: mySqrt
+* 入口参数: float x - 待求平方根的数值
+* 返 回 值: float - 计算得到的平方根值
+* 函数功能: 计算给定数值的平方根。
+* 说    明: 该函数采用牛顿迭代法计算平方根，经过多次迭代逼近平方根的真实值。
+******************************************************************************************/
+float mySqrt(float x)
+{
+    float a = x;
+    unsigned int i = *(unsigned int *)&x;
+    i = (i + 0x3f76cf62) >> 1;
+    x = *(float *)&i;
+    x = (x + a / x) * 0.5;
+    return x;
+}
+
+/*****************************************************************************************
+* 函 数 名: Rotate
+* 入口参数: int x0 - 旋转中心的横坐标
+*           int y0 - 旋转中心的纵坐标
+*           int *x - 待旋转点的横坐标
+*           int *y - 待旋转点的纵坐标
+*           double angle - 旋转角度（弧度）
+*           int direction - 旋转方向，非零表示顺时针，零表示逆时针
+* 返 回 值: 无
+* 函数功能: 对指定点进行旋转。
+* 说    明: 通过调用该函数，可以对给定的点围绕指定中心进行旋转。旋转角度由 angle 参数指定，
+*           direction 参数指定旋转方向，非零表示顺时针，零表示逆时针。
+******************************************************************************************/
 void Rotate(int x0, int y0, int *x, int *y, double angle, int direction)
 {
     int temp = (*y - y0) * (*y - y0) + (*x - x0) * (*x - x0);
     double r = mySqrt(temp);
     double a0 = atan2(*x - x0, *y - y0);
-
+    
     if (direction)
     {
         *x = x0 + r * cos(a0 + angle);
@@ -1869,31 +1470,14 @@ void Rotate(int x0, int y0, int *x, int *y, double angle, int direction)
 }
 
 /*****************************************************************************************
- * 函 数 名: mySqrt
- * 入口参数: float x - 待求平方根的数值
- * 返 回 值: float - 计算得到的平方根值
- * 函数功能: 计算给定数值的平方根。
- * 说    明: 该函数采用牛顿迭代法计算平方根，经过多次迭代逼近平方根的真实值。
- ******************************************************************************************/
-float mySqrt(float x)
-{
-    float a = x;
-    unsigned int i = *(unsigned int *)&x;
-    i = (i + 0x3f76cf62) >> 1;
-    x = *(float *)&i;
-    x = (x + a / x) * 0.5;
-    return x;
-}
-
-/*****************************************************************************************
- * 函 数 名: GetRotateXY
- * 入口参数: int x - 待旋转的点的原始横坐标
- *           int y - 待旋转的点的原始纵坐标
- * 返 回 值: TypeXY - 旋转后的点坐标
- * 函数功能: 获取经过旋转变换后的点坐标。
- * 说    明: 如果旋转角度不为0，通过调用 Rotate 函数实现对给定点的旋转，
- *          然后将旋转后的坐标保存在 TypeXY 结构体中返回。
- ******************************************************************************************/
+* 函 数 名: GetRotateXY
+* 入口参数: int x - 待旋转的点的原始横坐标
+*           int y - 待旋转的点的原始纵坐标
+* 返 回 值: TypeXY - 旋转后的点坐标
+* 函数功能: 获取经过旋转变换后的点坐标。
+* 说    明: 如果旋转角度不为0，通过调用 Rotate 函数实现对给定点的旋转，
+*          然后将旋转后的坐标保存在 TypeXY 结构体中返回。
+******************************************************************************************/
 TypeXY GetRotateXY(int x, int y)
 {
     TypeXY temp;
@@ -1904,57 +1488,11 @@ TypeXY GetRotateXY(int x, int y)
     return temp;
 }
 
-/*****************************************************************************************
- * 函 数 名: MoveTo
- * 入口参数: int x - 移动到的目标横坐标
- *           int y - 移动到的目标纵坐标
- * 返 回 值: 无
- * 函数功能: 移动绘图光标到指定的目标位置。
- * 说    明: 将绘图光标的当前位置更新为给定的目标位置，以便后续的绘图操作发生在该目标位置上。
- ******************************************************************************************/
-void MoveTo(int x, int y)
-{
-    _pointx = x;
-    _pointy = y;
-}
-
-/*****************************************************************************************
- * 函 数 名: LineTo
- * 入口参数: int x - 目标横坐标
- *           int y - 目标纵坐标
- * 返 回 值: 无
- * 函数功能: 在当前光标位置与指定目标位置之间绘制直线。
- * 说    明: 该函数绘制从当前光标位置到目标位置的直线，并将光标更新为目标位置。
- ******************************************************************************************/
-void LineTo(int x, int y)
-{
-    LCD_DrawLine(_pointx, _pointy, x, y);
-    _pointx = x;
-    _pointy = y;
-}
-
-/*****************************************************************************************
- * 函 数 名: SetRotateValue
- * 入口参数: int x - 旋转中心横坐标
- *           int y - 旋转中心纵坐标
- *           float angle - 旋转角度（弧度）
- *           int direct - 旋转方向（0为顺时针，1为逆时针）
- * 返 回 值: 无
- * 函数功能: 设置旋转参数，包括旋转中心、旋转角度和旋转方向。
- * 说    明: 该函数通过调用其他设置函数，实现了对旋转参数的一次性设置。
- ******************************************************************************************/
-void SetRotateValue(int x, int y, float angle, int direct)
-{
-    SetRotateCenter(x, y);
-    SetAngleDir(direct);
-    SetAngle(angle);
-}
-
 /**********************************************************************************************************************************
  *
- * 以下几个函数修改于HAL的库函数，目的是为了SPI传输数据不限数据长度的写入，并且提高清屏的速度
+ * 以下几个函数修改于HAL的库函数，目的是为了SPI传输数据不用计算偏移以及不限数据长度的写入
  *
- **********************************************************************************************************************************/
+ *****************************************************************************************************************LXB************/
 
 /**
  * @brief Handle SPI Communication Timeout.
@@ -1966,8 +1504,8 @@ void SetRotateValue(int x, int y, float angle, int direct)
  * @param Tickstart: Tick start value
  * @retval HAL status
  */
-HAL_StatusTypeDef LCD_SPI_WaitOnFlagUntilTimeout(SPI_HandleTypeDef *hspi, uint32_t Flag, FlagStatus Status,
-                                                 uint32_t Tickstart, uint32_t Timeout)
+HAL_StatusTypeDef MY_SPI_WaitOnFlagUntilTimeout(SPI_HandleTypeDef *hspi, uint32_t Flag, FlagStatus Status,
+                                                uint32_t Tickstart, uint32_t Timeout)
 {
     /* Wait until flag is set */
     while ((__HAL_SPI_GET_FLAG(hspi, Flag) ? SET : RESET) == Status)
@@ -1988,7 +1526,7 @@ HAL_StatusTypeDef LCD_SPI_WaitOnFlagUntilTimeout(SPI_HandleTypeDef *hspi, uint32
  * @retval HAL_ERROR: if any error detected
  *         HAL_OK: if nothing detected
  */
-void LCD_SPI_CloseTransfer(SPI_HandleTypeDef *hspi)
+void MY_SPI_CloseTransfer(SPI_HandleTypeDef *hspi)
 {
     uint32_t itflag = hspi->Instance->SR;
 
@@ -2049,7 +1587,6 @@ void LCD_SPI_CloseTransfer(SPI_HandleTypeDef *hspi)
  * @param  Size   : 数据大小
  * @retval HAL status
  */
-
 HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint32_t Size)
 {
     uint32_t tickstart;
@@ -2074,16 +1611,12 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
         return errorcode;
     }
 
-    if (Size == 0UL)
-    {
-        errorcode = HAL_ERROR;
-        __HAL_UNLOCK(hspi);
-        return errorcode;
-    }
-
     /* Set the transaction information */
     hspi->State = HAL_SPI_STATE_BUSY_TX;
     hspi->ErrorCode = HAL_SPI_ERROR_NONE;
+    //   hspi->pTxBuffPtr  = (uint8_t *)pData;
+    hspi->TxXferSize = Size;
+    hspi->TxXferCount = Size;
 
     LCD_TxDataCount = Size;                  // 传输的数据长度
     LCD_pData_32bit = (pData << 16) | pData; // 按32位传输时，合并2个像素点的颜色
@@ -2096,10 +1629,8 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
     hspi->RxISR = NULL;
 
     /* Configure communication direction : 1Line */
-    if (hspi->Init.Direction == SPI_DIRECTION_1LINE)
-    {
-        SPI_1LINE_TX(hspi);
-    }
+
+    SPI_1LINE_TX(hspi); // 单线SPI
 
     // 不使用硬件 TSIZE 控制，此处设置为0，即不限制传输的数据长度
     MODIFY_REG(hspi->Instance->CR2, SPI_CR2_TSIZE, 0);
@@ -2114,19 +1645,22 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
     }
 
     /* Transmit data in 16 Bit mode */
+    /* Transmit data in 16 Bit mode */
     while (LCD_TxDataCount > 0UL)
     {
         /* Wait until TXP flag is set to send data */
         if (__HAL_SPI_GET_FLAG(hspi, SPI_FLAG_TXP))
         {
-            if ((hspi->TxXferCount > 1UL) && (hspi->Init.FifoThreshold > SPI_FIFO_THRESHOLD_01DATA))
+            if ((LCD_TxDataCount > 1UL) && (hspi->Init.FifoThreshold > SPI_FIFO_THRESHOLD_01DATA))
             {
                 *((__IO uint32_t *)&hspi->Instance->TXDR) = (uint32_t)LCD_pData_32bit;
+                //  pData += sizeof(uint32_t);
                 LCD_TxDataCount -= (uint16_t)2UL;
             }
             else
             {
                 *((__IO uint16_t *)&hspi->Instance->TXDR) = (uint16_t)pData;
+                //  pData += sizeof(uint16_t);
                 LCD_TxDataCount--;
             }
         }
@@ -2136,7 +1670,7 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
             if ((((HAL_GetTick() - tickstart) >= Timeout) && (Timeout != HAL_MAX_DELAY)) || (Timeout == 0U))
             {
                 /* Call standard close procedure with error check */
-                LCD_SPI_CloseTransfer(hspi);
+                MY_SPI_CloseTransfer(hspi);
 
                 /* Process Unlocked */
                 __HAL_UNLOCK(hspi);
@@ -2147,19 +1681,18 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
             }
         }
     }
-
-    if (LCD_SPI_WaitOnFlagUntilTimeout(hspi, SPI_SR_TXC, RESET, tickstart, Timeout) != HAL_OK)
+    if (MY_SPI_WaitOnFlagUntilTimeout(hspi, SPI_SR_TXC, RESET, tickstart, Timeout) != HAL_OK)
     {
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
 
     SET_BIT((hspi)->Instance->CR1, SPI_CR1_CSUSP); // 请求挂起SPI传输
     /* 等待SPI挂起 */
-    if (LCD_SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_SUSP, RESET, tickstart, Timeout) != HAL_OK)
+    if (MY_SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_SUSP, RESET, tickstart, Timeout) != HAL_OK)
     {
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
-    LCD_SPI_CloseTransfer(hspi); /* Call standard close procedure with error check */
+    MY_SPI_CloseTransfer(hspi); /* Call standard close procedure with error check */
 
     SET_BIT((hspi)->Instance->IFCR, SPI_IFCR_SUSPC); // 清除挂起标志位
 
@@ -2174,9 +1707,8 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
     }
     return errorcode;
 }
-
 /**
- * @brief  专为批量写入数据修改，使之不限长度的传输数据
+ * @brief
  * @param  hspi   : spi的句柄
  * @param  pData  : 要写入的数据
  * @param  Size   : 数据大小
@@ -2185,8 +1717,8 @@ HAL_StatusTypeDef LCD_SPI_Transmit(SPI_HandleTypeDef *hspi, uint16_t pData, uint
 HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pData, uint32_t Size)
 {
     uint32_t tickstart;
-    uint32_t Timeout = 1000;  // 超时判断
-    uint32_t LCD_TxDataCount; // 传输计数
+    uint32_t Timeout = 1000;       // 超时判断
+    __IO uint32_t LCD_TxDataCount; // 传输计数
     HAL_StatusTypeDef errorcode = HAL_OK;
 
     /* Check Direction parameter */
@@ -2205,13 +1737,6 @@ HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pDat
         return errorcode;
     }
 
-    if (Size == 0UL)
-    {
-        errorcode = HAL_ERROR;
-        __HAL_UNLOCK(hspi);
-        return errorcode;
-    }
-
     /* Set the transaction information */
     hspi->State = HAL_SPI_STATE_BUSY_TX;
     hspi->ErrorCode = HAL_SPI_ERROR_NONE;
@@ -2219,17 +1744,12 @@ HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pDat
     LCD_TxDataCount = Size; // 传输的数据长度
 
     /*Init field not used in handle to zero */
-    hspi->pRxBuffPtr = NULL;
-    hspi->RxXferSize = (uint16_t)0UL;
-    hspi->RxXferCount = (uint16_t)0UL;
     hspi->TxISR = NULL;
     hspi->RxISR = NULL;
 
     /* Configure communication direction : 1Line */
-    if (hspi->Init.Direction == SPI_DIRECTION_1LINE)
-    {
-        SPI_1LINE_TX(hspi);
-    }
+
+    SPI_1LINE_TX(hspi); // 单线SPI
 
     // 不使用硬件 TSIZE 控制，此处设置为0，即不限制传输的数据长度
     MODIFY_REG(hspi->Instance->CR2, SPI_CR2_TSIZE, 0);
@@ -2243,6 +1763,7 @@ HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pDat
         SET_BIT(hspi->Instance->CR1, SPI_CR1_CSTART);
     }
 
+    /* Transmit data in 16 Bit mode */
     /* Transmit data in 16 Bit mode */
     while (LCD_TxDataCount > 0UL)
     {
@@ -2262,36 +1783,39 @@ HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pDat
                 LCD_TxDataCount--;
             }
         }
-        else
-        {
-            /* Timeout management */
-            if ((((HAL_GetTick() - tickstart) >= Timeout) && (Timeout != HAL_MAX_DELAY)) || (Timeout == 0U))
-            {
-                /* Call standard close procedure with error check */
-                LCD_SPI_CloseTransfer(hspi);
+        //      else
+        //      {
+        //        /* Timeout management */
+        //        if ((((HAL_GetTick() - tickstart) >=  Timeout) && (Timeout != HAL_MAX_DELAY)) || (Timeout == 0U))
+        //        {
+        //          /* Call standard close procedure with error check */
+        //          MY_SPI_CloseTransfer(hspi);
 
-                /* Process Unlocked */
-                __HAL_UNLOCK(hspi);
+        //          /* Process Unlocked */
+        //          __HAL_UNLOCK(hspi);
 
-                SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_TIMEOUT);
-                hspi->State = HAL_SPI_STATE_READY;
-                return HAL_ERROR;
-            }
-        }
+        //          SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_TIMEOUT);
+        //          hspi->State = HAL_SPI_STATE_READY;
+        //          return HAL_ERROR;
+        //        }
+        //      }
     }
 
-    if (LCD_SPI_WaitOnFlagUntilTimeout(hspi, SPI_SR_TXC, RESET, tickstart, Timeout) != HAL_OK)
+    //  	printf ("%d \r\n",LCD_TxDataCount);
+
+    //
+    if (MY_SPI_WaitOnFlagUntilTimeout(hspi, SPI_SR_TXC, RESET, tickstart, Timeout) != HAL_OK)
     {
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
 
     SET_BIT((hspi)->Instance->CR1, SPI_CR1_CSUSP); // 请求挂起SPI传输
     /* 等待SPI挂起 */
-    if (LCD_SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_SUSP, RESET, tickstart, Timeout) != HAL_OK)
+    if (MY_SPI_WaitOnFlagUntilTimeout(hspi, SPI_FLAG_SUSP, RESET, tickstart, Timeout) != HAL_OK)
     {
         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
     }
-    LCD_SPI_CloseTransfer(hspi); /* Call standard close procedure with error check */
+    MY_SPI_CloseTransfer(hspi); /* Call standard close procedure with error check */
 
     SET_BIT((hspi)->Instance->IFCR, SPI_IFCR_SUSPC); // 清除挂起标志位
 
@@ -2307,4 +1831,6 @@ HAL_StatusTypeDef LCD_SPI_TransmitBuffer(SPI_HandleTypeDef *hspi, uint16_t *pDat
     return errorcode;
 }
 
-/* USER CODE END 1 */
+/**************************************************************************************************************************************************************************************************************************************************************************LXB***/
+// 实验平台：鹿小班 STM32H7核心板
+//

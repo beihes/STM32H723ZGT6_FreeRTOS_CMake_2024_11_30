@@ -115,7 +115,7 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/User/Src/main.c.obj: \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\inc\cjson.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\led\led.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\freertos\userfreertos.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_model.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\spi.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcdmode.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_spi_154.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_fonts.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_image.h

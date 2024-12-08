@@ -57,7 +57,8 @@
   */
 int main(void) {
     /* USER CODE BEGIN 1 */
-
+    SCB_EnableICache();   // 使能ICache
+    SCB_EnableDCache();   // 使能DCache
     /* USER CODE END 1 */
 
     /* MCU Configuration--------------------------------------------------------*/

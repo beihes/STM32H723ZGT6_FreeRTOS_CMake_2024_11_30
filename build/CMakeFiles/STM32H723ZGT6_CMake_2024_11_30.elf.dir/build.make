@@ -82,10 +82,24 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.s:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.s"
 	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\FreeRTOS\userFreeRTOS.c -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\FreeRTOS\userFreeRTOS.c.s
 
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcdMode.c
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj"
+	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj -MF CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcdMode.c.obj.d -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcdMode.c.obj -c D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcdMode.c
+
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.i"
+	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcdMode.c > CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcdMode.c.i
+
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.s"
+	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcdMode.c -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcdMode.c.s
+
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_fonts.c
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj"
 	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj -MF CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_fonts.c.obj.d -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_fonts.c.obj -c D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_fonts.c
 
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.i: cmake_force
@@ -99,7 +113,7 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.s: cmake_f
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_image.c
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj"
 	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj -MF CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_image.c.obj.d -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_image.c.obj -c D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_image.c
 
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.i: cmake_force
@@ -110,33 +124,19 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.s: cmake_f
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.s"
 	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_image.c -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_image.c.s
 
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_model.c
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj"
-	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj -MF CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_model.c.obj.d -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_model.c.obj -c D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_model.c
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/lcd_spi_154.c
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj"
+	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj -MF CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_spi_154.c.obj.d -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_spi_154.c.obj -c D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_spi_154.c
 
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.i"
-	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_model.c > CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_model.c.i
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.i"
+	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_spi_154.c > CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_spi_154.c.i
 
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.s"
-	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_model.c -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_model.c.s
-
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/LCD/spi.c
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj"
-	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj -MF CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\spi.c.obj.d -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\spi.c.obj -c D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\spi.c
-
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.i"
-	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\spi.c > CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\spi.c.i
-
-CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.s"
-	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\spi.c -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\spi.c.s
+CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.s"
+	D:\ToolPath\ARM-NO~1\BASE_F~1\102021~1.10\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S D:\MyCode\VSCode\STM32\STM32H723ZGT6\STM32H723ZGT6_FreeRTOS_CMake_2024_11_30\App\LCD\lcd_spi_154.c -o CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\App\LCD\lcd_spi_154.c.s
 
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.obj: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/flags.make
 CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.obj: D:/MyCode/VSCode/STM32/STM32H723ZGT6/STM32H723ZGT6_FreeRTOS_CMake_2024_11_30/App/Led/led.c
@@ -2198,10 +2198,10 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/User/Src/system_stm32h7xx.c.s:
 # Object files for target STM32H723ZGT6_CMake_2024_11_30.elf
 STM32H723ZGT6_CMake_2024_11_30_elf_OBJECTS = \
 "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.obj" \
+"CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj" \
 "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj" \
 "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj" \
-"CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj" \
-"CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj" \
+"CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj" \
 "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.obj" \
 "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Define/define.c.obj" \
 "CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Dts/dts.c.obj" \
@@ -2354,10 +2354,10 @@ STM32H723ZGT6_CMake_2024_11_30_elf_OBJECTS = \
 STM32H723ZGT6_CMake_2024_11_30_elf_EXTERNAL_OBJECTS =
 
 STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/FreeRTOS/userFreeRTOS.c.obj
+STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcdMode.c.obj
 STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_fonts.c.obj
 STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_image.c.obj
-STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_model.c.obj
-STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/spi.c.obj
+STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/LCD/lcd_spi_154.c.obj
 STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.obj
 STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Define/define.c.obj
 STM32H723ZGT6_CMake_2024_11_30.elf: CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Dts/dts.c.obj

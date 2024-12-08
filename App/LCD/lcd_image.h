@@ -9,8 +9,6 @@ extern const uint8_t Image_Android_83x83[];
 extern const uint8_t Image_Message_83x83[];
 extern const uint8_t Image_Toys_83x83[];
 extern const uint8_t Image_Video_83x83[];
-
-extern const uint8_t Image_1_239x239[];
-extern const uint8_t Image_2_239x239[];
+extern const uint8_t Image_BHS_32x32[];
 
 #endif // __LCD_IMAGE_H
