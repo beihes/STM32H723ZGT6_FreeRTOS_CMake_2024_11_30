@@ -29,7 +29,8 @@ extern "C"
     void LCD_Clock(void);            // 时钟
     void Clock_Needle(int t, int l); // 时钟、分钟移动轨迹
     void Clock_Sec(int t, int l);    // 秒针移动轨迹和表盘
-    void DrawClockHand(int t, int l, uint32_t color);
+    //l为秒针长度，依次为l，l/4*3，1/2
+    void Show_Clock(int l, uint32_t time);
     void User_Image(uint16_t x,uint16_t y, const char* user,uint16_t* image);
 
 #ifdef __cplusplus

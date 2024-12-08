@@ -52,6 +52,7 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/User/Src/main.c.obj: \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_hsem.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_i2c.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_i2c_ex.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_ospi.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_pwr.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_pwr_ex.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_rtc.h \
@@ -113,9 +114,14 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/User/Src/main.c.obj: \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\dts\dts.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\usart\usart.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\inc\cjson.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\fatfs\ff.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\fatfs\integer.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\fatfs\ffconf.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\led\led.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\freertos\userfreertos.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcdmode.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_spi_154.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_fonts.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_image.h
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\lcd\lcd_image.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\w25q64\ospi_w25q64.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\app\w25q64\fatfs.h

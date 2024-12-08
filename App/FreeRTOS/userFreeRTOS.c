@@ -39,7 +39,12 @@
 cJSON *cJSONData = NULL;
 cJSON_Hooks cJSONHooks = {.free_fn = vPortFree, .malloc_fn = pvPortMalloc};
 char *cJSONStr = NULL;
-CoreData coreData = {.name = "STM32H732ZGT6", .temperature = 0, .time = 0};
+CoreData coreData = {
+    .name = "STM32H732ZGT6",
+    .temperature = 0,
+    .time = 0,
+    .memory = 0,
+    .drivers = {.jy61p = -1,.fatfs=-1, .lcd = -1, .sdCard = -1, .w25q64 = -1}};
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -66,6 +71,14 @@ const osThreadAttr_t usart1_printf_attributes = {
 osThreadId_t lcd_printfHandle;
 const osThreadAttr_t lcd_printf_attributes = {
     .name = "lcd_printf",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
+};
+
+/* Definitions for usart1_printf */
+osThreadId_t w25q64_RWHandle;
+const osThreadAttr_t w25q64_RW_attributes = {
+    .name = "w25q64_RW",
     .stack_size = 128 * 4,
     .priority = (osPriority_t)osPriorityNormal,
 };
@@ -118,6 +131,8 @@ void MX_FREERTOS_Init(void)
     /* creation of lcd_printf */
     lcd_printfHandle = osThreadNew(Start_lcd_printf, NULL, &lcd_printf_attributes);
 
+    /* creation of lcd_printf */
+    w25q64_RWHandle = osThreadNew(Start_w25q64_RW, NULL, &lcd_printf_attributes);
     /* USER CODE BEGIN RTOS_THREADS */
     /* add threads, ... */
     /* USER CODE END RTOS_THREADS */
@@ -227,11 +242,36 @@ void Start_lcd_printf(void *argument)
         strcpy(midStr, "");
         sprintf(midStr, "Time:%ld", coreData.time);
         LCD_DisplayText(10, 22, midStr);
-        Clock_Needle(coreData.time / 720000, 32);
-        Clock_Needle(coreData.time / 60000, 48);
-        Clock_Sec(coreData.time / 1000, 64);
+        //Show_Clock(64,coreData.time);
         User_Image(240 - 96 - 1, 0, "BHS", (uint16_t *)Image_BHS_32x32);
+        if (coreData.drivers.w25q64==OSPI_W25Qxx_OK)
+        {
+            LCD_DisplayText(10, 46, "W25Q64:OK");
+        }
+        if (coreData.drivers.fatfs == SUCCESS)
+        {
+            LCD_DisplayText(10, 46, "W25Q64:OK");
+            LCD_DisplayText(10, 58, "FATFS:OK");
+        }
+    }
+    /* USER CODE END Start_usart1_printf */
+}
+
+/* USER CODE BEGIN Application */
+void Start_w25q64_RW(void *argument)
+{
+    /* USER CODE BEGIN Start_usart1_printf */
+    /* Infinite loop */
+    //coreData.drivers.w25q64= OSPI_W25Qxx_Test();
+    for (;;)
+    {
+        osDelay(500);
     }
     /* USER CODE END Start_usart1_printf */
 }
 /* USER CODE END Application */
+
+CoreData* getCoreData()
+{
+    return &coreData;
+}

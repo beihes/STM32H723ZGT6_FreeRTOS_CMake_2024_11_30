@@ -10,6 +10,8 @@ extern "C" {
 #include "led.h"
 #include "userFreeRTOS.h"
 #include "lcdMode.h"
+#include "ospi_w25q64.h"
+#include "fatFs.h"
 
 #ifdef __cplusplus
 }

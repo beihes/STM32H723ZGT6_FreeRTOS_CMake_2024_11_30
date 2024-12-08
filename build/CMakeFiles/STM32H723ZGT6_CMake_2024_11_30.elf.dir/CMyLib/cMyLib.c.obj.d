@@ -51,6 +51,7 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/cMyLib.c.obj: \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_hsem.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_i2c.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_i2c_ex.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_ospi.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_pwr.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_pwr_ex.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_rtc.h \
@@ -111,4 +112,7 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/cMyLib.c.obj: \
  d:\toolpath\arm-no~1\base_f~1\102021~1.10\arm-none-eabi\include\machine\time.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\dts\dts.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\usart\usart.h \
- d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\inc\cjson.h
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\inc\cjson.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\fatfs\ff.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\fatfs\integer.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\cmylib\fatfs\ffconf.h

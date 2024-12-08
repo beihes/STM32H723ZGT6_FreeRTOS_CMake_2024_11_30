@@ -49,6 +49,7 @@ CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Src/stm32h7xx_hal_msp.c
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_hsem.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_i2c.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_i2c_ex.h \
+ d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_ospi.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_pwr.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_pwr_ex.h \
  d:\mycode\vscode\stm32\stm32h723zgt6\stm32h723zgt6_freertos_cmake_2024_11_30\system\stm32h7xx_hal_driver\inc\stm32h7xx_hal_rtc.h \

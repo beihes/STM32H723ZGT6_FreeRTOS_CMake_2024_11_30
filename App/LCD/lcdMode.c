@@ -495,6 +495,13 @@ void Clock_Sec(int t, int l)
     }
 }
 
+void Show_Clock(int l, uint32_t time)
+{
+    Clock_Needle(time / 720000, l / 2);
+    Clock_Needle(time / 60000, l / 4 * 3);
+    Clock_Sec(time / 1000, l);
+}
+
 void User_Image(uint16_t x, uint16_t y, const char *user, uint16_t *image)
 {
     char midStr[16] = "";

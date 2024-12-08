@@ -1,13 +1,18 @@
 #ifndef __spi_lcd
 #define __spi_lcd
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #include "stm32h7xx_hal.h"
 #include "usart.h"
 
 #include "lcd_fonts.h" // 图片和字库文件不是必须，用户可自行删减
 #include "lcd_image.h"
 
-/*----------------------------------------------- 参数宏 -------------------------------------------*/
+    /*----------------------------------------------- 参数宏 -------------------------------------------*/
 
 #define LCD_Width 240  // LCD的像素长度
 #define LCD_Height 240 // LCD的像素宽度
@@ -25,29 +30,29 @@
 #define Fill_Zero 0  // 填充0
 #define Fill_Space 1 // 填充空格
 
-#define RADIAN(angle)  ((angle==0)?0:(3.14159*angle/180))   //角度转换
-#define MAX(x,y)  		((x)>(y)? (x):(y))
-#define MIN(x,y)  		((x)<(y)? (x):(y))
-#define SWAP(x, y) \
-	(y) = (x) + (y); \
-	(x) = (y) - (x); \
-	(y) = (y) - (x);
-#define ABS(X)  ((X) > 0 ? (X) : -(X))   //计算输入数值的绝对值
-	
-//二维坐标结构体，包含横坐标 x 和纵坐标 y
-typedef struct COORDINATE 
-{
-    int x;  // 横坐标
-    int y;  // 纵坐标
-} TypeXY;
+#define RADIAN(angle) ((angle == 0) ? 0 : (3.14159 * angle / 180)) // 角度转换
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+#define MIN(x, y) ((x) < (y) ? (x) : (y))
+#define SWAP(x, y)   \
+    (y) = (x) + (y); \
+    (x) = (y) - (x); \
+    (y) = (y) - (x);
+#define ABS(X) ((X) > 0 ? (X) : -(X)) // 计算输入数值的绝对值
 
-//旋转结构体，包含旋转中心 center、旋转角度 angle 和旋转方向 direct
-typedef struct ROATE
-{
-    TypeXY center;   // 旋转中心坐标
-    float angle;     // 旋转角度
-    int direct;      // 旋转方向
-} TypeRoate;
+    // 二维坐标结构体，包含横坐标 x 和纵坐标 y
+    typedef struct COORDINATE
+    {
+        int x; // 横坐标
+        int y; // 纵坐标
+    } TypeXY;
+
+    // 旋转结构体，包含旋转中心 center、旋转角度 angle 和旋转方向 direct
+    typedef struct ROATE
+    {
+        TypeXY center; // 旋转中心坐标
+        float angle;   // 旋转角度
+        int direct;    // 旋转方向
+    } TypeRoate;
 
 /*---------------------------------------- 常用颜色 ------------------------------------------------------
 
@@ -82,66 +87,66 @@ typedef struct ROATE
 #define DARK_YELLOW 0x808000  //	暗黄色
 #define DARK_GREY 0x404040    //	暗灰色
 
-/*------------------------------------------------ 函数声明 ----------------------------------------------*/
+    /*------------------------------------------------ 函数声明 ----------------------------------------------*/
 
-void SPI_LCD_Init(void);                                                     // 液晶屏以及SPI初始化
-void LCD_Clear(void);                                                        // 清屏函数
-void LCD_ClearRect(uint16_t x, uint16_t y, uint16_t width, uint16_t height); // 局部清屏函数
+    void SPI_LCD_Init(void);                                                     // 液晶屏以及SPI初始化
+    void LCD_Clear(void);                                                        // 清屏函数
+    void LCD_ClearRect(uint16_t x, uint16_t y, uint16_t width, uint16_t height); // 局部清屏函数
 
-void LCD_SetAddress(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2); // 设置坐标
-void LCD_SetColor(uint32_t Color);                                       //	设置画笔颜色
-void LCD_SetBackColor(uint32_t Color);                                   //	设置背景颜色
-void LCD_SetDirection(uint8_t direction);                                //	设置显示方向
+    void LCD_SetAddress(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2); // 设置坐标
+    void LCD_SetColor(uint32_t Color);                                       //	设置画笔颜色
+    void LCD_SetBackColor(uint32_t Color);                                   //	设置背景颜色
+    void LCD_SetDirection(uint8_t direction);                                //	设置显示方向
 
-//>>>>>	显示ASCII字符
-void LCD_SetAsciiFont(pFONT *fonts);                     //	设置ASCII字体
-void LCD_DisplayChar(uint16_t x, uint16_t y, uint8_t c); //	显示单个ASCII字符
-void LCD_DisplayString(uint16_t x, uint16_t y, char *p); //	显示ASCII字符串
+    //>>>>>	显示ASCII字符
+    void LCD_SetAsciiFont(pFONT *fonts);                     //	设置ASCII字体
+    void LCD_DisplayChar(uint16_t x, uint16_t y, uint8_t c); //	显示单个ASCII字符
+    void LCD_DisplayString(uint16_t x, uint16_t y, char *p); //	显示ASCII字符串
 
-//>>>>>	显示中文字符，包括ASCII码
-void LCD_SetTextFont(pFONT *fonts);                           // 设置文本字体，包括中文和ASCII字体
-void LCD_DisplayChinese(uint16_t x, uint16_t y, char *pText); // 显示单个汉字
-void LCD_DisplayText(uint16_t x, uint16_t y, char *pText);    // 显示字符串，包括中文和ASCII字符
+    //>>>>>	显示中文字符，包括ASCII码
+    void LCD_SetTextFont(pFONT *fonts);                           // 设置文本字体，包括中文和ASCII字体
+    void LCD_DisplayChinese(uint16_t x, uint16_t y, char *pText); // 显示单个汉字
+    void LCD_DisplayText(uint16_t x, uint16_t y, char *pText);    // 显示字符串，包括中文和ASCII字符
 
-//>>>>>	显示整数或小数
-void LCD_ShowNumMode(uint8_t mode);                                                         // 设置变量显示模式，多余位填充空格还是填充0
-void LCD_DisplayNumber(uint16_t x, uint16_t y, int32_t number, uint8_t len);                // 显示整数
-void LCD_DisplayDecimals(uint16_t x, uint16_t y, double number, uint8_t len, uint8_t decs); // 显示小数
+    //>>>>>	显示整数或小数
+    void LCD_ShowNumMode(uint8_t mode);                                                         // 设置变量显示模式，多余位填充空格还是填充0
+    void LCD_DisplayNumber(uint16_t x, uint16_t y, int32_t number, uint8_t len);                // 显示整数
+    void LCD_DisplayDecimals(uint16_t x, uint16_t y, double number, uint8_t len, uint8_t decs); // 显示小数
 
-//>>>>>	2D图形函数
-void LCD_DrawPoint(uint16_t x, uint16_t y, uint32_t color); // 画点
+    //>>>>>	2D图形函数
+    void LCD_DrawPoint(uint16_t x, uint16_t y, uint32_t color); // 画点
 
-void LCD_DrawLine_V(uint16_t x, uint16_t y, uint16_t height);          // 画垂直线
-void LCD_DrawLine_H(uint16_t x, uint16_t y, uint16_t width);           // 画水平线
-void LCD_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2); // 两点之间画线
+    void LCD_DrawLine_V(uint16_t x, uint16_t y, uint16_t height);          // 画垂直线
+    void LCD_DrawLine_H(uint16_t x, uint16_t y, uint16_t width);           // 画水平线
+    void LCD_DrawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2); // 两点之间画线
 
-void LCD_DrawRect(uint16_t x, uint16_t y, uint16_t width, uint16_t height); // 画矩形
-void LCD_DrawCircle(uint16_t x, uint16_t y, uint16_t r);                    // 画圆
-void LCD_DrawEllipse(int x, int y, int r1, int r2);                         // 画椭圆
+    void LCD_DrawRect(uint16_t x, uint16_t y, uint16_t width, uint16_t height); // 画矩形
+    void LCD_DrawCircle(uint16_t x, uint16_t y, uint16_t r);                    // 画圆
+    void LCD_DrawEllipse(int x, int y, int r1, int r2);                         // 画椭圆
 
-//>>>>>	区域填充函数
-void LCD_FillRect(uint16_t x, uint16_t y, uint16_t width, uint16_t height); // 填充矩形
-void LCD_FillCircle(uint16_t x, uint16_t y, uint16_t r);                    // 填充圆
+    //>>>>>	区域填充函数
+    void LCD_FillRect(uint16_t x, uint16_t y, uint16_t width, uint16_t height); // 填充矩形
+    void LCD_FillCircle(uint16_t x, uint16_t y, uint16_t r);                    // 填充圆
 
-//>>>>>	绘制单色图片
-void LCD_DrawImage(uint16_t x, uint16_t y, uint16_t width, uint16_t height, const uint8_t *pImage);
+    //>>>>>	绘制单色图片
+    void LCD_DrawImage(uint16_t x, uint16_t y, uint16_t width, uint16_t height, const uint8_t *pImage);
 
-//>>>>>	批量复制函数，直接将数据复制到屏幕的显存
-void LCD_CopyBuffer(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t *DataBuff);
+    //>>>>>	批量复制函数，直接将数据复制到屏幕的显存
+    void LCD_CopyBuffer(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t *DataBuff);
 
-void MoveTo(int x, int y);  // 移动到指定坐标
-void LineTo(int x, int y);  // 画线到指定坐标
-void SetRotateValue(int x, int y, float angle, int direct); // 设置旋转值
+    void MoveTo(int x, int y);                                  // 移动到指定坐标
+    void LineTo(int x, int y);                                  // 画线到指定坐标
+    void SetRotateValue(int x, int y, float angle, int direct); // 设置旋转值
 
-TypeXY GetXY(void);   // 获取当前坐标
-void SetRotateCenter(int x0, int y0);  // 设置旋转中心
-void SetAngleDir(int direction);       // 设置旋转方向
-void SetAngle(float angle);             // 设置旋转角度
-float mySqrt(float x);  // 计算平方根
-void Rotate(int x0, int y0, int *x, int *y, double angle, int direction); // 旋转坐标
-TypeXY GetRotateXY(int x, int y);  // 获取旋转后的坐标
+    TypeXY GetXY(void);                                                       // 获取当前坐标
+    void SetRotateCenter(int x0, int y0);                                     // 设置旋转中心
+    void SetAngleDir(int direction);                                          // 设置旋转方向
+    void SetAngle(float angle);                                               // 设置旋转角度
+    float mySqrt(float x);                                                    // 计算平方根
+    void Rotate(int x0, int y0, int *x, int *y, double angle, int direction); // 旋转坐标
+    TypeXY GetRotateXY(int x, int y);                                         // 获取旋转后的坐标
 
-/*--------------------------------------------- LCD其它引脚 -----------------------------------------------*/
+    /*--------------------------------------------- LCD其它引脚 -----------------------------------------------*/
 
 #define LCD_Backlight_PIN GPIO_PIN_12                              // 背光  引脚
 #define LCD_Backlight_PORT GPIOG                                   // 背光 GPIO端口
@@ -156,5 +161,9 @@ TypeXY GetRotateXY(int x, int y);  // 获取旋转后的坐标
 
 #define LCD_DC_Command HAL_GPIO_WritePin(LCD_DC_PORT, LCD_DC_PIN, GPIO_PIN_RESET); // 低电平，指令传输
 #define LCD_DC_Data HAL_GPIO_WritePin(LCD_DC_PORT, LCD_DC_PIN, GPIO_PIN_SET);      // 高电平，数据传输
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //__spi_lcd

@@ -78,9 +78,11 @@ include_directories(
     ./App/FreeRTOS
     ./App/LCD
     ./App/Led
+    ./App/W25Q64
     ./CMyLib
     ./CMyLib/Define
     ./CMyLib/Dts
+    ./CMyLib/FatFs
     ./CMyLib/Inc
     ./CMyLib/Usart
     ./System
@@ -100,9 +102,11 @@ file(GLOB_RECURSE SOURCES
     "App/FreeRTOS/*.c"
     "App/LCD/*.c"
     "App/Led/*.c"
+    "App/W25Q64/*.c"
     "CMyLib/cMyLib.c"
     "CMyLib/Define/*.c"
     "CMyLib/Dts/*.c"
+    "CMyLib/FatFs/*.c"
     "CMyLib/Src/cJSON.c"
     "CMyLib/Src/stm32h7xx_hal_msp.c"
     "CMyLib/Src/sysmem.c"

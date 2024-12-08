@@ -272,6 +272,54 @@ App/Led/led.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/Led/led.c.s
 .PHONY : App/Led/led.c.s
 
+App/W25Q64/fatFs.obj: App/W25Q64/fatFs.c.obj
+.PHONY : App/W25Q64/fatFs.obj
+
+# target to build an object file
+App/W25Q64/fatFs.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/W25Q64/fatFs.c.obj
+.PHONY : App/W25Q64/fatFs.c.obj
+
+App/W25Q64/fatFs.i: App/W25Q64/fatFs.c.i
+.PHONY : App/W25Q64/fatFs.i
+
+# target to preprocess a source file
+App/W25Q64/fatFs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/W25Q64/fatFs.c.i
+.PHONY : App/W25Q64/fatFs.c.i
+
+App/W25Q64/fatFs.s: App/W25Q64/fatFs.c.s
+.PHONY : App/W25Q64/fatFs.s
+
+# target to generate assembly for a file
+App/W25Q64/fatFs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/W25Q64/fatFs.c.s
+.PHONY : App/W25Q64/fatFs.c.s
+
+App/W25Q64/ospi_w25q64.obj: App/W25Q64/ospi_w25q64.c.obj
+.PHONY : App/W25Q64/ospi_w25q64.obj
+
+# target to build an object file
+App/W25Q64/ospi_w25q64.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/W25Q64/ospi_w25q64.c.obj
+.PHONY : App/W25Q64/ospi_w25q64.c.obj
+
+App/W25Q64/ospi_w25q64.i: App/W25Q64/ospi_w25q64.c.i
+.PHONY : App/W25Q64/ospi_w25q64.i
+
+# target to preprocess a source file
+App/W25Q64/ospi_w25q64.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/W25Q64/ospi_w25q64.c.i
+.PHONY : App/W25Q64/ospi_w25q64.c.i
+
+App/W25Q64/ospi_w25q64.s: App/W25Q64/ospi_w25q64.c.s
+.PHONY : App/W25Q64/ospi_w25q64.s
+
+# target to generate assembly for a file
+App/W25Q64/ospi_w25q64.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/App/W25Q64/ospi_w25q64.c.s
+.PHONY : App/W25Q64/ospi_w25q64.c.s
+
 CMyLib/Define/define.obj: CMyLib/Define/define.c.obj
 .PHONY : CMyLib/Define/define.obj
 
@@ -319,6 +367,102 @@ CMyLib/Dts/dts.s: CMyLib/Dts/dts.c.s
 CMyLib/Dts/dts.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/Dts/dts.c.s
 .PHONY : CMyLib/Dts/dts.c.s
+
+CMyLib/FatFs/diskio.obj: CMyLib/FatFs/diskio.c.obj
+.PHONY : CMyLib/FatFs/diskio.obj
+
+# target to build an object file
+CMyLib/FatFs/diskio.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/diskio.c.obj
+.PHONY : CMyLib/FatFs/diskio.c.obj
+
+CMyLib/FatFs/diskio.i: CMyLib/FatFs/diskio.c.i
+.PHONY : CMyLib/FatFs/diskio.i
+
+# target to preprocess a source file
+CMyLib/FatFs/diskio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/diskio.c.i
+.PHONY : CMyLib/FatFs/diskio.c.i
+
+CMyLib/FatFs/diskio.s: CMyLib/FatFs/diskio.c.s
+.PHONY : CMyLib/FatFs/diskio.s
+
+# target to generate assembly for a file
+CMyLib/FatFs/diskio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/diskio.c.s
+.PHONY : CMyLib/FatFs/diskio.c.s
+
+CMyLib/FatFs/ff.obj: CMyLib/FatFs/ff.c.obj
+.PHONY : CMyLib/FatFs/ff.obj
+
+# target to build an object file
+CMyLib/FatFs/ff.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ff.c.obj
+.PHONY : CMyLib/FatFs/ff.c.obj
+
+CMyLib/FatFs/ff.i: CMyLib/FatFs/ff.c.i
+.PHONY : CMyLib/FatFs/ff.i
+
+# target to preprocess a source file
+CMyLib/FatFs/ff.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ff.c.i
+.PHONY : CMyLib/FatFs/ff.c.i
+
+CMyLib/FatFs/ff.s: CMyLib/FatFs/ff.c.s
+.PHONY : CMyLib/FatFs/ff.s
+
+# target to generate assembly for a file
+CMyLib/FatFs/ff.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ff.c.s
+.PHONY : CMyLib/FatFs/ff.c.s
+
+CMyLib/FatFs/ffsystem.obj: CMyLib/FatFs/ffsystem.c.obj
+.PHONY : CMyLib/FatFs/ffsystem.obj
+
+# target to build an object file
+CMyLib/FatFs/ffsystem.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ffsystem.c.obj
+.PHONY : CMyLib/FatFs/ffsystem.c.obj
+
+CMyLib/FatFs/ffsystem.i: CMyLib/FatFs/ffsystem.c.i
+.PHONY : CMyLib/FatFs/ffsystem.i
+
+# target to preprocess a source file
+CMyLib/FatFs/ffsystem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ffsystem.c.i
+.PHONY : CMyLib/FatFs/ffsystem.c.i
+
+CMyLib/FatFs/ffsystem.s: CMyLib/FatFs/ffsystem.c.s
+.PHONY : CMyLib/FatFs/ffsystem.s
+
+# target to generate assembly for a file
+CMyLib/FatFs/ffsystem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ffsystem.c.s
+.PHONY : CMyLib/FatFs/ffsystem.c.s
+
+CMyLib/FatFs/ffunicode.obj: CMyLib/FatFs/ffunicode.c.obj
+.PHONY : CMyLib/FatFs/ffunicode.obj
+
+# target to build an object file
+CMyLib/FatFs/ffunicode.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ffunicode.c.obj
+.PHONY : CMyLib/FatFs/ffunicode.c.obj
+
+CMyLib/FatFs/ffunicode.i: CMyLib/FatFs/ffunicode.c.i
+.PHONY : CMyLib/FatFs/ffunicode.i
+
+# target to preprocess a source file
+CMyLib/FatFs/ffunicode.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ffunicode.c.i
+.PHONY : CMyLib/FatFs/ffunicode.c.i
+
+CMyLib/FatFs/ffunicode.s: CMyLib/FatFs/ffunicode.c.s
+.PHONY : CMyLib/FatFs/ffunicode.s
+
+# target to generate assembly for a file
+CMyLib/FatFs/ffunicode.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\STM32H723ZGT6_CMake_2024_11_30.elf.dir\build.make CMakeFiles/STM32H723ZGT6_CMake_2024_11_30.elf.dir/CMyLib/FatFs/ffunicode.c.s
+.PHONY : CMyLib/FatFs/ffunicode.c.s
 
 CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.obj: CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.c.obj
 .PHONY : CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.obj
@@ -3787,12 +3931,30 @@ help:
 	@echo ... App/Led/led.obj
 	@echo ... App/Led/led.i
 	@echo ... App/Led/led.s
+	@echo ... App/W25Q64/fatFs.obj
+	@echo ... App/W25Q64/fatFs.i
+	@echo ... App/W25Q64/fatFs.s
+	@echo ... App/W25Q64/ospi_w25q64.obj
+	@echo ... App/W25Q64/ospi_w25q64.i
+	@echo ... App/W25Q64/ospi_w25q64.s
 	@echo ... CMyLib/Define/define.obj
 	@echo ... CMyLib/Define/define.i
 	@echo ... CMyLib/Define/define.s
 	@echo ... CMyLib/Dts/dts.obj
 	@echo ... CMyLib/Dts/dts.i
 	@echo ... CMyLib/Dts/dts.s
+	@echo ... CMyLib/FatFs/diskio.obj
+	@echo ... CMyLib/FatFs/diskio.i
+	@echo ... CMyLib/FatFs/diskio.s
+	@echo ... CMyLib/FatFs/ff.obj
+	@echo ... CMyLib/FatFs/ff.i
+	@echo ... CMyLib/FatFs/ff.s
+	@echo ... CMyLib/FatFs/ffsystem.obj
+	@echo ... CMyLib/FatFs/ffsystem.i
+	@echo ... CMyLib/FatFs/ffsystem.s
+	@echo ... CMyLib/FatFs/ffunicode.obj
+	@echo ... CMyLib/FatFs/ffunicode.i
+	@echo ... CMyLib/FatFs/ffunicode.s
 	@echo ... CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.obj
 	@echo ... CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.i
 	@echo ... CMyLib/Src/TimeBase/stm32h7xx_hal_timebase_tim.s
